@@ -51,6 +51,23 @@
 
 /admin/view/*
 !/admin/view/
+
+/admin/view/javascript/*
+!/admin/view/javascript/
+/admin/view/javascript/jquery/*
+!/admin/view/javascript/jquery/
+/admin/view/javascript/jquery/colorpicker.js
+
+/admin/view/stylesheet/*
+!/admin/view/stylesheet/
+/admin/view/stylesheet/xd_callback.css
+/admin/view/stylesheet/mini_phone_button.png
+
+/admin/view/stylesheet/css/*
+!/admin/view/stylesheet/css/
+/admin/view/stylesheet/css/colorpicker.css
+!/admin/view/stylesheet/images/
+
 /admin/view/template/*
 !/admin/view/template/
 

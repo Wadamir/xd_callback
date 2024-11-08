@@ -1,12 +1,12 @@
 <?php
 // Heading
-$_['heading_name']          = 'XD Zvonok';
-$_['heading_title']         = '<span style="font-weight:800; color:#0066cc; text-align:left; font-size:1.5em">XD</span>&nbsp;&nbsp;<i class="fa fa-bolt" style="color:#990000; text-align:left; font-size:1.5em" aria-hidden="true"></i>&nbsp;&nbsp;<span style="font-weight:800; text-align:left; font-size:1.5em"><span style="color:#003366;">Zvonok</span></span>';
+$_['heading_name']          = 'XD Callback';
+$_['heading_title']         = '<span style="font-weight:800; color:#0066cc; text-align:left; font-size:1.5em">XD</span>&nbsp;&nbsp;<i class="fa fa-bolt" style="color:#990000; text-align:left; font-size:1.5em" aria-hidden="true"></i>&nbsp;&nbsp;<span style="font-weight:800; text-align:left; font-size:1.5em"><span style="color:#003366;">Callback</span></span>';
 
 // Text
 $_['text_module']           = 'Модули';
-$_['text_success']          = 'Отлично! Вы изменили модуль XD Zvonok!';
-$_['text_edit']             = 'Редактировать модуль XD Zvonok';
+$_['text_success']          = 'Отлично! Вы изменили модуль XD Callback!';
+$_['text_edit']             = 'Редактировать модуль XD Callback';
 $_['text_enabled']          = 'Включено';
 $_['text_disabled']         = 'Отключено';
 
@@ -38,7 +38,7 @@ $_['value_validation_type2']        = '+38(000)000-00-00';
 
 // Entry
 $_['entry_button_name']             = 'Текст на кнопке';
-$_['entry_status']                  = 'Статус модуля XD Zvonok';
+$_['entry_status']                  = 'Статус модуля XD Callback';
 $_['entry_success_field']           = 'Текст успешной отправки';
 $_['success_field_tooltip']         = 'Допустимо использовать html-теги';
 
@@ -82,4 +82,4 @@ $_['text_tab_help_title']           = 'Нужна помощь?';
 $_['text_help']                     = '<p><a href="//xdomus.ru/opencart/xd_callback-opencart-free/" target="_blank">Описание модуля</a></p><p><a href="//xdomus.ru/opencart/ocmod-instruktsiya-dlya-razrabotchika/" target="_blank">OCMOD - инструкция для разработчика</a></p><p><a href="//xdomus.ru/support/" target="_blank">Отправить запрос на установку модуля</a></p>';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify XD Zvonok module!';
+$_['error_permission']     = 'Warning: You do not have permission to modify XD Callback module!';
