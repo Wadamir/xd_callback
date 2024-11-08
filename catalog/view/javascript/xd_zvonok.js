@@ -1,8 +1,8 @@
 $(document).ready(function() {
-	$('#xd_zvonok-form input').focus(function(){
+	$('#callback-form input').focus(function(){
 		$(this).parent().removeClass('has-error');
 	});
-    $('#xd_zvonok-form').submit(function(event) {
+    $('#callback-form').submit(function(event) {
 		event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 		if(!formValidation(event.target)){return false;}
 		var sendingForm = $(this);
@@ -10,9 +10,9 @@ $(document).ready(function() {
 		var value_text = $(submit_btn).text();
 		var waiting_text = 'SENDING';
 		$.ajax({
-			url: 'index.php?route=module/xd_zvonok/submit',
+			url: 'index.php?route=module/callback/submit',
 			type: 'post',
-			data: $('#xd_zvonok-form input[type=\'hidden\'], #xd_zvonok-form input[type=\'text\'], #xd_zvonok-form input[type=\'tel\'], #xd_zvonok-form input[type=\'email\'], #xd_zvonok-form textarea'),
+			data: $('#callback-form input[type=\'hidden\'], #callback-form input[type=\'text\'], #callback-form input[type=\'tel\'], #callback-form input[type=\'email\'], #callback-form textarea'),
 			dataType: 'json',
 			beforeSend: function() {
 				$(submit_btn).prop( 'disabled', true );
@@ -37,13 +37,13 @@ $(document).ready(function() {
 					$(submit_btn).removeClass('waiting');
 					$(submit_btn).text(value_text);
 					$(submit_btn).prop( 'disabled', false );
-					$('#xd_zvonok_modal').modal('hide');
-					$('#xd_zvonok_modal').on('hidden.bs.modal', function (e) {
+					$('#callback_modal').modal('hide');
+					$('#callback_modal').on('hidden.bs.modal', function (e) {
 						if (success) {
-							$('#xd_zvonok_success').modal('show');
+							$('#callback_success').modal('show');
 							setTimeout(function(){
 									console.log('success sending!');
-									$('#xd_zvonok_success').modal('hide');
+									$('#callback_success').modal('hide');
 							}, 4000);
 							success = false;
 						}

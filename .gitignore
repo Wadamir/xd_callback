@@ -10,13 +10,13 @@
 
 /admin/controller/module/*
 !/admin/controller/module/
-!/admin/controller/module/xd_zvonok.php
+!/admin/controller/module/xd_callback.php
 
 /admin/controller/extension/*
 !/admin/controller/extension/
 /admin/controller/extension/module/*
 !/admin/controller/extension/module/
-!/admin/controller/extension/module/xd_zvonok.php
+!/admin/controller/extension/module/xd_callback.php
 
 /admin/language/*
 !/admin/language/
@@ -25,7 +25,7 @@
 !/admin/language/english/
 /admin/language/english/module/*
 !/admin/language/english/module/
-!/admin/language/english/module/xd_zvonok.php
+!/admin/language/english/module/xd_callback.php
 
 /admin/language/en-gb/*
 !/admin/language/en-gb/
@@ -33,13 +33,13 @@
 !/admin/language/en-gb/extension/
 /admin/language/en-gb/extension/module/*
 !/admin/language/en-gb/extension/module/
-!/admin/language/en-gb/extension/module/xd_zvonok.php
+!/admin/language/en-gb/extension/module/xd_callback.php
 
 /admin/language/russian/*
 !/admin/language/russian/
 /admin/language/russian/module/*
 !/admin/language/russian/module/
-!/admin/language/russian/module/xd_zvonok.php
+!/admin/language/russian/module/xd_callback.php
 
 /admin/language/ru-ru/*
 !/admin/language/ru-ru/
@@ -47,7 +47,7 @@
 !/admin/language/ru-ru/extension/
 /admin/language/ru-ru/extension/module/*
 !/admin/language/ru-ru/extension/module/
-!/admin/language/ru-ru/extension/module/xd_zvonok.php
+!/admin/language/ru-ru/extension/module/xd_callback.php
 
 /admin/view/*
 !/admin/view/
@@ -56,13 +56,13 @@
 
 /admin/view/template/module/*
 !/admin/view/template/module/
-!/admin/view/template/module/xd_zvonok.tpl
+!/admin/view/template/module/xd_callback.tpl
 
 /admin/view/template/extension/*
 !/admin/view/template/extension/
 /admin/view/template/extension/module/*
 !/admin/view/template/extension/module/
-!/admin/view/template/extension/module/xd_zvonok.tpl
+!/admin/view/template/extension/module/xd_callback.tpl
 
 /catalog/*
 !/catalog/
@@ -72,13 +72,13 @@
 
 /catalog/controller/module/*
 !/catalog/controller/module/
-!/catalog/controller/module/xd_zvonok.php
+!/catalog/controller/module/xd_callback.php
 
 /catalog/controller/extension/*
 !/catalog/controller/extension/
 /catalog/controller/extension/module/*
 !/catalog/controller/extension/module/
-!/catalog/controller/extension/module/xd_zvonok.php
+!/catalog/controller/extension/module/xd_callback.php
 
 /catalog/language/*
 !/catalog/language/
@@ -87,7 +87,7 @@
 !/catalog/language/english/
 /catalog/language/english/module/*
 !/catalog/language/english/module/
-!/catalog/language/english/module/xd_zvonok.php
+!/catalog/language/english/module/xd_callback.php
 
 /catalog/language/en-gb/*
 !/catalog/language/en-gb/
@@ -95,13 +95,13 @@
 !/catalog/language/en-gb/extension/
 /catalog/language/en-gb/extension/module/*
 !/catalog/language/en-gb/extension/module/
-!/catalog/language/en-gb/extension/module/xd_zvonok.php
+!/catalog/language/en-gb/extension/module/xd_callback.php
 
 /catalog/language/russian/*
 !/catalog/language/russian/
 /catalog/language/russian/module/*
 !/catalog/language/russian/module/
-!/catalog/language/russian/module/xd_zvonok.php
+!/catalog/language/russian/module/xd_callback.php
 
 /catalog/language/ru-ru/*
 !/catalog/language/ru-ru/
@@ -109,7 +109,7 @@
 !/catalog/language/ru-ru/extension/
 /catalog/language/ru-ru/extension/module/*
 !/catalog/language/ru-ru/extension/module/
-!/catalog/language/ru-ru/extension/module/xd_zvonok.php
+!/catalog/language/ru-ru/extension/module/xd_callback.php
 
 /catalog/view/*
 !/catalog/view/
@@ -122,29 +122,29 @@
 
 /catalog/view/theme/default/template/module/*
 !/catalog/view/theme/default/template/module/
-!/catalog/view/theme/default/template/module/xd_zvonok.tpl
+!/catalog/view/theme/default/template/module/xd_callback.tpl
 
 /catalog/view/theme/default/template/extension/*
 !/catalog/view/theme/default/template/extension/
 /catalog/view/theme/default/template/extension/module/*
 !/catalog/view/theme/default/template/extension/module/
-!/catalog/view/theme/default/template/extension/module/xd_zvonok.tpl
+!/catalog/view/theme/default/template/extension/module/xd_callback.tpl
 
 
 /catalog/view/theme/default/stylesheet/*
 !/catalog/view/theme/default/stylesheet/
-!/catalog/view/theme/default/stylesheet/xd_zvonok.css
+!/catalog/view/theme/default/stylesheet/xd_callback.css
 !/catalog/view/theme/default/stylesheet/mini_phone_button.png
 
 /catalog/view/javascript/*
 !/catalog/view/javascript/
-!/catalog/view/javascript/xd_zvonok.js
+!/catalog/view/javascript/xd_callback.js
 !/catalog/view/javascript/sourcebuster.min.js
 !/catalog/view/javascript/jquery.mask.min.js
 
 /system/*
 !/system/
-!/system/xd_zvonok.ocmod.xml
+!/system/xd_callback.ocmod.xml
 
 /image/
 /install/
