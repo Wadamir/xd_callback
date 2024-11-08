@@ -1,15 +1,15 @@
 <?php
-$_['callback_button_name']     = 'Request a call back';
-$_['callback_modal_title']     = 'Callback order';
-$_['callback_field1_title']     = 'Name';
-$_['callback_field2_title']     = 'Phone';
-$_['callback_field3_title']     = 'Message';
-$_['callback_required_text']     = 'required field';
-$_['callback_success_field']     = '<h2>Thank you!<br />We will contact you as soon as possible.</h2>';
-$_['callback_error_required']     = 'Please, fill required fields!';
-$_['callback_error_sending']     = 'Sending error, try again later!';
-$_['callback_text_agree']         = 'By clicking "SEND" button, you have read and agree to <a href="%s" class="agree"><b>%s</b></a>';
-$_['callback_submit_button']     = 'SEND';
+$_['xd_callback_button_name']     = 'Request a call back';
+$_['xd_callback_modal_title']     = 'xd_callback order';
+$_['xd_callback_field1_title']     = 'Name';
+$_['xd_callback_field2_title']     = 'Phone';
+$_['xd_callback_field3_title']     = 'Message';
+$_['xd_callback_required_text']     = 'required field';
+$_['xd_callback_success_field']     = '<h2>Thank you!<br />We will contact you as soon as possible.</h2>';
+$_['xd_callback_error_required']     = 'Please, fill required fields!';
+$_['xd_callback_error_sending']     = 'Sending error, try again later!';
+$_['xd_callback_text_agree']         = 'By clicking "SEND" button, you have read and agree to <a href="%s" class="agree"><b>%s</b></a>';
+$_['xd_callback_submit_button']     = 'SEND';
 
 // text
 $_['text_name']                 = 'Name: ';
@@ -19,7 +19,7 @@ $_['text_ip']                     = 'IP-address: ';
 $_['text_forwarded_ip']         = 'Forwarded IP: ';
 $_['text_user_agent']             = 'User agent: ';
 $_['text_sender_name']             = 'XD Zvonok';
-$_['text_mail_title']             = 'Callback order from %s';
+$_['text_mail_title']             = 'xd_callback order from %s';
 
 // source
 $_['sb_first_visit_title']         = 'First visit';

@@ -8,23 +8,23 @@ class ControllerModuleXDZvonok extends Controller
 
         if ($this->request->server['REQUEST_METHOD'] == 'POST') {
 
-            $this->load->language('module/callback');
+            $this->load->language('module/xd_callback');
             $json = array();
             $mail_text = '';
 
-            if (isset($this->request->post['callback_name'])) {
-                $callback_name = $this->request->post['callback_name'];
-                $mail_text .= $this->language->get('text_name') . $callback_name . " \r\n";
+            if (isset($this->request->post['xd_callback_name'])) {
+                $xd_callback_name = $this->request->post['xd_callback_name'];
+                $mail_text .= $this->language->get('text_name') . $xd_callback_name . " \r\n";
             }
 
-            if (isset($this->request->post['callback_phone'])) {
-                $callback_phone = $this->request->post['callback_phone'];
-                $mail_text .= $this->language->get('text_phone') . $callback_phone . " \r\n";
+            if (isset($this->request->post['xd_callback_phone'])) {
+                $xd_callback_phone = $this->request->post['xd_callback_phone'];
+                $mail_text .= $this->language->get('text_phone') . $xd_callback_phone . " \r\n";
             }
 
-            if (isset($this->request->post['callback_message'])) {
-                $callback_message = $this->request->post['callback_message'];
-                $mail_text .= $this->language->get('text_message') . $callback_message . " \r\n";
+            if (isset($this->request->post['xd_callback_message'])) {
+                $xd_callback_message = $this->request->post['xd_callback_message'];
+                $mail_text .= $this->language->get('text_message') . $xd_callback_message . " \r\n";
             }
 
             if (!empty($this->request->server['REMOTE_ADDR'])) {
@@ -157,7 +157,7 @@ class ControllerModuleXDZvonok extends Controller
             }
             // Private data end
 
-            $from_email = 'callback@' . $_SERVER['SERVER_NAME'];
+            $from_email = 'xd_callback@' . $_SERVER['SERVER_NAME'];
             $sender_name = $this->language->get('text_sender_name');
             $mail_title = sprintf($this->language->get('text_mail_title'), $this->config->get('config_name'));
 

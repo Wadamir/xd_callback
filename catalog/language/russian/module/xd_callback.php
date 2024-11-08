@@ -1,15 +1,15 @@
 <?php
-$_['callback_button_name']     = 'Обратный звонок';
-$_['callback_modal_title']     = 'Заказ обратного звонка';
-$_['callback_field1_title']     = 'Имя';
-$_['callback_field2_title']     = 'Телефон';
-$_['callback_field3_title']     = 'Сообщение';
-$_['callback_required_text']     = 'обязательное поле';
-$_['callback_success_field']     = '<h3>Спасибо!<br />Мы свяжемся с Вами в самое ближайшее время.</h3>';
-$_['callback_error_required']     = 'Пожалуйста, заполните обязательные поля!';
-$_['callback_error_sending']     = 'Ошибка отправки, попробуйте повторить позднее!';
-$_['callback_text_agree']         = 'Нажимая кнопку "ОТПРАВИТЬ", Вы соглашаетесь с <a href="%s" class="agree"><b>%s</b></a>';
-$_['callback_submit_button']     = 'ОТПРАВИТЬ';
+$_['xd_callback_button_name']     = 'Обратный звонок';
+$_['xd_callback_modal_title']     = 'Заказ обратного звонка';
+$_['xd_callback_field1_title']     = 'Имя';
+$_['xd_callback_field2_title']     = 'Телефон';
+$_['xd_callback_field3_title']     = 'Сообщение';
+$_['xd_callback_required_text']     = 'обязательное поле';
+$_['xd_callback_success_field']     = '<h3>Спасибо!<br />Мы свяжемся с Вами в самое ближайшее время.</h3>';
+$_['xd_callback_error_required']     = 'Пожалуйста, заполните обязательные поля!';
+$_['xd_callback_error_sending']     = 'Ошибка отправки, попробуйте повторить позднее!';
+$_['xd_callback_text_agree']         = 'Нажимая кнопку "ОТПРАВИТЬ", Вы соглашаетесь с <a href="%s" class="agree"><b>%s</b></a>';
+$_['xd_callback_submit_button']     = 'ОТПРАВИТЬ';
 
 // text
 $_['text_name']                 = 'Имя: ';

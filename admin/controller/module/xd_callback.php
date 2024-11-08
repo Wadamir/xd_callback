@@ -4,14 +4,14 @@ class ControllerModuleXDZvonok extends Controller
     private $error = array();
     public function index()
     {
-        $this->load->language('module/callback');
+        $this->load->language('module/xd_callback');
         $this->document->setTitle($this->language->get('heading_name'));
-        $this->document->addStyle('view/stylesheet/callback.css');
+        $this->document->addStyle('view/stylesheet/xd_callback.css');
         $this->document->addStyle('view/stylesheet/css/colorpicker.css');
         $this->document->addScript('view/javascript/jquery/colorpicker.js');
         $this->load->model('setting/setting');
         if (($this->request->server['REQUEST_METHOD'] === 'POST') && $this->validate()) {
-            $this->model_setting_setting->editSetting('callback', $this->request->post);
+            $this->model_setting_setting->editSetting('xd_callback', $this->request->post);
             $this->session->data['success'] = $this->language->get('text_success');
             $this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
         }
@@ -114,16 +114,16 @@ class ControllerModuleXDZvonok extends Controller
         );
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_name'),
-            'href' => $this->url->link('module/callback', 'token=' . $this->session->data['token'], 'SSL')
+            'href' => $this->url->link('module/xd_callback', 'token=' . $this->session->data['token'], 'SSL')
         );
-        $data['action'] = $this->url->link('module/callback', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action'] = $this->url->link('module/xd_callback', 'token=' . $this->session->data['token'], 'SSL');
         $data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
 
         // New var
-        if (isset($this->request->post['callback'])) {
-            $data['callback'] = $this->request->post['callback'];
+        if (isset($this->request->post['xd_callback'])) {
+            $data['xd_callback'] = $this->request->post['xd_callback'];
         } else {
-            $data['callback'] = $this->config->get('callback');
+            $data['xd_callback'] = $this->config->get('xd_callback');
         }
 
         $this->load->model('localisation/language');
@@ -131,32 +131,32 @@ class ControllerModuleXDZvonok extends Controller
         $languages = $this->model_localisation_language->getLanguages();
         foreach ($languages as $language) {
             $language_id = $language['language_id'];
-            if (isset($this->request->post['callback'])) {
-                $post_data = $this->request->post['callback'];
-                $data['callback']['button_name'][$language['language_id']] = $post_data['button_name'][$language['language_id']];
-                $data['callback']['success_field'][$language['language_id']] = $post_data['success_field'][$language['language_id']];
+            if (isset($this->request->post['xd_callback'])) {
+                $post_data = $this->request->post['xd_callback'];
+                $data['xd_callback']['button_name'][$language['language_id']] = $post_data['button_name'][$language['language_id']];
+                $data['xd_callback']['success_field'][$language['language_id']] = $post_data['success_field'][$language['language_id']];
             } else {
-                if (isset($this->config->get('callback')['button_name'][$language['language_id']]) && $this->config->get('callback')['button_name'][$language['language_id']] != '') {
-                    $data['callback']['button_name'][$language['language_id']] = $this->config->get('callback')['button_name'][$language['language_id']];
+                if (isset($this->config->get('xd_callback')['button_name'][$language['language_id']]) && $this->config->get('xd_callback')['button_name'][$language['language_id']] != '') {
+                    $data['xd_callback']['button_name'][$language['language_id']] = $this->config->get('xd_callback')['button_name'][$language['language_id']];
                 } else {
                     // Set default values
                     if ($language_id == $this->config->get('config_language_id')) {
-                        $data['callback']['button_name'][$language['language_id']] = $this->language->get('default_button_name');
+                        $data['xd_callback']['button_name'][$language['language_id']] = $this->language->get('default_button_name');
                     }
                 }
-                if (isset($this->config->get('callback')['success_field'][$language['language_id']]) && $this->config->get('callback')['success_field'][$language['language_id']] != '') {
-                    $data['callback']['success_field'][$language['language_id']] = $this->config->get('callback')['success_field'][$language['language_id']];
+                if (isset($this->config->get('xd_callback')['success_field'][$language['language_id']]) && $this->config->get('xd_callback')['success_field'][$language['language_id']] != '') {
+                    $data['xd_callback']['success_field'][$language['language_id']] = $this->config->get('xd_callback')['success_field'][$language['language_id']];
                 } else {
                     // Set default values
                     if ($language_id == $this->config->get('config_language_id')) {
-                        $data['callback']['success_field'][$language['language_id']] = $this->language->get('default_success_field');
+                        $data['xd_callback']['success_field'][$language['language_id']] = $this->language->get('default_success_field');
                     }
                 }
             }
         }
         // Set default values
-        if (!isset($data['callback']['button_color']) || $data['callback']['button_color'] == '') {
-            $data['callback']['button_color'] = '#0066cc';
+        if (!isset($data['xd_callback']['button_color']) || $data['xd_callback']['button_color'] == '') {
+            $data['xd_callback']['button_color'] = '#0066cc';
         }
 
         /********************* Captchas ********************************/
@@ -179,68 +179,68 @@ class ControllerModuleXDZvonok extends Controller
         }
 
         /********************* Modal window fields *********************/
-        if (isset($this->request->post['callback_field1_status'])) {
-            $data['callback_field1_status'] = $this->request->post['callback_field1_status'];
+        if (isset($this->request->post['xd_callback_field1_status'])) {
+            $data['xd_callback_field1_status'] = $this->request->post['xd_callback_field1_status'];
         } else {
-            $data['callback_field1_status'] = $this->config->get('callback_field1_status');
+            $data['xd_callback_field1_status'] = $this->config->get('xd_callback_field1_status');
         }
-        if (isset($this->request->post['callback_field1_required'])) {
-            $data['callback_field1_required'] = $this->request->post['callback_field1_required'];
+        if (isset($this->request->post['xd_callback_field1_required'])) {
+            $data['xd_callback_field1_required'] = $this->request->post['xd_callback_field1_required'];
         } else {
-            $data['callback_field1_required'] = $this->config->get('callback_field1_required');
+            $data['xd_callback_field1_required'] = $this->config->get('xd_callback_field1_required');
         }
-        if (isset($this->request->post['callback_field2_status'])) {
-            $data['callback_field2_status'] = $this->request->post['callback_field2_status'];
+        if (isset($this->request->post['xd_callback_field2_status'])) {
+            $data['xd_callback_field2_status'] = $this->request->post['xd_callback_field2_status'];
         } else {
-            $data['callback_field2_status'] = $this->config->get('callback_field2_status');
+            $data['xd_callback_field2_status'] = $this->config->get('xd_callback_field2_status');
         }
-        if (isset($this->request->post['callback_field2_required'])) {
-            $data['callback_field2_required'] = $this->request->post['callback_field2_required'];
+        if (isset($this->request->post['xd_callback_field2_required'])) {
+            $data['xd_callback_field2_required'] = $this->request->post['xd_callback_field2_required'];
         } else {
-            $data['callback_field2_required'] = $this->config->get('callback_field2_required');
+            $data['xd_callback_field2_required'] = $this->config->get('xd_callback_field2_required');
         }
-        if (isset($this->request->post['callback_field3_status'])) {
-            $data['callback_field3_status'] = $this->request->post['callback_field3_status'];
+        if (isset($this->request->post['xd_callback_field3_status'])) {
+            $data['xd_callback_field3_status'] = $this->request->post['xd_callback_field3_status'];
         } else {
-            $data['callback_field3_status'] = $this->config->get('callback_field3_status');
+            $data['xd_callback_field3_status'] = $this->config->get('xd_callback_field3_status');
         }
-        if (isset($this->request->post['callback_field3_required'])) {
-            $data['callback_field3_required'] = $this->request->post['callback_field3_required'];
+        if (isset($this->request->post['xd_callback_field3_required'])) {
+            $data['xd_callback_field3_required'] = $this->request->post['xd_callback_field3_required'];
         } else {
-            $data['callback_field3_required'] = $this->config->get('callback_field3_required');
+            $data['xd_callback_field3_required'] = $this->config->get('xd_callback_field3_required');
         }
 
-        if (isset($this->request->post['callback_agree_status'])) {
-            $data['callback_agree_status'] = $this->request->post['callback_agree_status'];
+        if (isset($this->request->post['xd_callback_agree_status'])) {
+            $data['xd_callback_agree_status'] = $this->request->post['xd_callback_agree_status'];
         } else {
-            $data['callback_agree_status'] = $this->config->get('callback_agree_status');
+            $data['xd_callback_agree_status'] = $this->config->get('xd_callback_agree_status');
         }
-        if (isset($this->request->post['callback_validation_type'])) {
-            $data['callback_validation_type'] = $this->request->post['callback_validation_type'];
+        if (isset($this->request->post['xd_callback_validation_type'])) {
+            $data['xd_callback_validation_type'] = $this->request->post['xd_callback_validation_type'];
         } else {
-            $data['callback_validation_type'] = $this->config->get('callback_validation_type');
+            $data['xd_callback_validation_type'] = $this->config->get('xd_callback_validation_type');
         }
         /********************* STATUS *********************/
-        if (isset($this->request->post['callback_status'])) {
-            $data['callback_status'] = $this->request->post['callback_status'];
+        if (isset($this->request->post['xd_callback_status'])) {
+            $data['xd_callback_status'] = $this->request->post['xd_callback_status'];
         } else {
-            $data['callback_status'] = $this->config->get('callback_status');
+            $data['xd_callback_status'] = $this->config->get('xd_callback_status');
         }
         /*
-		if (isset($this->request->post['callback_style_status'])) {
-			$data['callback_style_status'] = $this->request->post['callback_style_status'];
+		if (isset($this->request->post['xd_callback_style_status'])) {
+			$data['xd_callback_style_status'] = $this->request->post['xd_callback_style_status'];
 		} else {
-			$data['callback_style_status'] = $this->config->get('callback_style_status');
+			$data['xd_callback_style_status'] = $this->config->get('xd_callback_style_status');
 		}
 		*/
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
-        $this->response->setOutput($this->load->view('module/callback.tpl', $data));
+        $this->response->setOutput($this->load->view('module/xd_callback.tpl', $data));
     }
     protected function validate()
     {
-        if (!$this->user->hasPermission('modify', 'module/callback')) {
+        if (!$this->user->hasPermission('modify', 'module/xd_callback')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
         return !$this->error;

@@ -79,7 +79,7 @@ $_['google_target_status_title']    = 'Включить Google цель';
 // Help Tab
 $_['text_tab_help']                 = 'Помощь';
 $_['text_tab_help_title']           = 'Нужна помощь?';
-$_['text_help']                     = '<p><a href="//xdomus.ru/opencart/callback-opencart-free/" target="_blank">Описание модуля</a></p><p><a href="//xdomus.ru/opencart/ocmod-instruktsiya-dlya-razrabotchika/" target="_blank">OCMOD - инструкция для разработчика</a></p><p><a href="//xdomus.ru/support/" target="_blank">Отправить запрос на установку модуля</a></p>';
+$_['text_help']                     = '<p><a href="//xdomus.ru/opencart/xd_callback-opencart-free/" target="_blank">Описание модуля</a></p><p><a href="//xdomus.ru/opencart/ocmod-instruktsiya-dlya-razrabotchika/" target="_blank">OCMOD - инструкция для разработчика</a></p><p><a href="//xdomus.ru/support/" target="_blank">Отправить запрос на установку модуля</a></p>';
 
 // Error
 $_['error_permission']     = 'Warning: You do not have permission to modify XD Zvonok module!';
