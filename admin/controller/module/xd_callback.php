@@ -1,5 +1,5 @@
 <?php
-class ControllerModuleXDZvonok extends Controller
+class ControllerModuleXDCallback extends Controller
 {
     private $error = array();
     public function index()
@@ -45,6 +45,8 @@ class ControllerModuleXDZvonok extends Controller
         $data['text_validation_type2'] = $this->language->get('text_validation_type2');
         $data['value_validation_type1'] = $this->language->get('value_validation_type1');
         $data['value_validation_type2'] = $this->language->get('value_validation_type2');
+        // Spam protection
+        $data['entry_spam_protection'] = $this->language->get('entry_spam_protection');
         // Entry
         $data['entry_button_name'] = $this->language->get('entry_button_name');
         $data['entry_status'] = $this->language->get('entry_status');
@@ -54,10 +56,15 @@ class ControllerModuleXDZvonok extends Controller
         // Tab Styles
         $data['tab_styles'] = $this->language->get('tab_styles');
         $data['tab_styles_button_color'] = $this->language->get('tab_styles_button_color');
-
-        // Default values
-        $data['default_button_name'] = $this->language->get('default_button_name');
-        $data['default_success_field'] = $this->language->get('default_success_field');
+        $data['tab_styles_button_position'] = $this->language->get('tab_styles_button_position');
+        $data['tab_styles_button_position_hide'] = $this->language->get('tab_styles_button_position_hide');
+        $data['tab_styles_button_position_top_left'] = $this->language->get('tab_styles_button_position_top_left');
+        $data['tab_styles_button_position_top_right'] = $this->language->get('tab_styles_button_position_top_right');
+        $data['tab_styles_button_position_bottom_left'] = $this->language->get('tab_styles_button_position_bottom_left');
+        $data['tab_styles_button_position_bottom_right'] = $this->language->get('tab_styles_button_position_bottom_right');
+        $data['tab_styles_modal_style'] = $this->language->get('tab_styles_modal_style');
+        $data['tab_styles_modal_style_default'] = $this->language->get('tab_styles_modal_style_default');
+        $data['tab_styles_modal_style_custom'] = $this->language->get('tab_styles_modal_style_custom');
 
 
 
@@ -154,9 +161,18 @@ class ControllerModuleXDZvonok extends Controller
                 }
             }
         }
+
+
+
         // Set default values
         if (!isset($data['xd_callback']['button_color']) || $data['xd_callback']['button_color'] == '') {
-            $data['xd_callback']['button_color'] = '#0066cc';
+            $data['xd_callback']['button_color'] = '#003366';
+        }
+        if (!isset($data['xd_callback']['button_position']) || $data['xd_callback']['button_position'] == '') {
+            $data['xd_callback']['button_position'] = 'bottom_right';
+        }
+        if (!isset($data['xd_callback']['spam_protection']) || $data['xd_callback']['spam_protection'] == '') {
+            $data['xd_callback']['spam_protection'] = '0';
         }
 
         /********************* Captchas ********************************/

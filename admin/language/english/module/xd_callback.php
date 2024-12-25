@@ -37,6 +37,9 @@ $_['text_validation_type2']         = 'Ukraine: +38(000)000-00-00';
 $_['value_validation_type1']        = '+7(000)000-00-00';
 $_['value_validation_type2']        = '+38(000)000-00-00';
 
+// Spam protection
+$_['entry_spam_protection']         = 'Additional spam protection';
+
 // Entry
 $_['entry_button_name']             = 'Text on button';
 $_['entry_status']                  = 'Enable XD Callback module';
@@ -44,18 +47,27 @@ $_['entry_success_field']           = 'Success window text';
 $_['success_field_tooltip']         = 'Using HTML tags is allowed';
 
 // Tab Styles
-$_['tab_styles']                    = 'Styles';
-$_['tab_styles_button_color']       = 'Button main color';
+$_['tab_styles']                                = 'Styles';
+$_['tab_styles_button_color']                   = 'Button main color';
+$_['tab_styles_button_position']                = 'Button position';
+$_['tab_styles_button_position_hide']           = 'Hide';
+$_['tab_styles_button_position_top_left']       = 'Top left';
+$_['tab_styles_button_position_top_right']      = 'Top right';
+$_['tab_styles_button_position_bottom_left']    = 'Bottom left';
+$_['tab_styles_button_position_bottom_right']   = 'Bottom right';
+$_['tab_styles_modal_style']                    = 'Modal window style';
+$_['tab_styles_modal_style_default']            = 'Default';
+$_['tab_styles_modal_style_custom']             = 'Custom';
 
 // Default values
 $_['default_button_name']           = 'Request a call back';
-$_['default_success_field']         = '<h2 class="text-center">Thank you!<br />We will contact you as soon as possible.</h2>';
+$_['default_success_field']         = '&lt;h2 class=&quot;text-center&quot;&gt;Thank you!&lt;br /&gt;We will contact you as soon as possible.&lt;/h2&gt;';
 
 
 
 // Extended analytics
-$_['exan_form_title']                       = '<strong><span style="color:green;">Extended</span></strong> analytics settings';
-$_['exan_status_title']                     = 'Extended analytics status';
+$_['exan_form_title']                       = '<strong><span style="color:red;">source</span><span style="color:#333333;">buster</span><span style="color:#b9b9b9;">.js</span></strong> analytics settings';
+$_['exan_status_title']                     = 'sourcebuster.js analytics status';
 
 // Yandex
 $_['ya_form_title']                         = '<strong><span style="color:red;">Y</span>andex</strong> Target settings';

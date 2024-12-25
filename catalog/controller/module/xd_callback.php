@@ -1,16 +1,98 @@
 <?php
-class ControllerModuleXDZvonok extends Controller
+class ControllerModuleXDCallback extends Controller
 {
     private $error = array();
 
+    private $field1_status = null;
+    private $field2_status = null;
+    private $field3_status = null;
+    private $captcha = null;
+    private $spam_protection = null;
+    private $exan_status = null;
+
+    public function index()
+    {
+        $data = [];
+        $xd_callback_setting = $this->config->get('xd_callback');
+        $data['status'] = false;
+        if ($xd_callback_setting) {
+            $data['status'] = boolval($xd_callback_setting['module_xd_callback_status']);
+            if ($data['status']) {
+                // Get language data
+                $this->load->language('module/xd_callback');
+                $data['modal_title'] = $this->language->get('modal_title');
+                $data['required_text'] = $this->language->get('required_text');
+                $data['error_required'] = $this->language->get('error_required');
+                $data['error_sending'] = $this->language->get('error_sending');
+                $data['submit_button'] = $this->language->get('submit_button');
+
+                $current_language_id = $this->config->get('config_language_id');
+                $data['button_name'] = $xd_callback_setting['button_name'][$current_language_id];
+                if ($data['button_name'] == '') {
+                    $data['button_name'] = $this->language->get('button_name');
+                }
+                $data['success_field'] = html_entity_decode($xd_callback_setting['success_field'][$current_language_id], ENT_QUOTES, 'UTF-8');
+                if ($data['success_field'] == '') {
+                    $data['success_field'] = $this->language->get('success_field');
+                }
+
+                // Fields
+                $data['field1_status'] = intval($xd_callback_setting['field1_status']); // Name status
+                $this->field1_status = $data['field1_status'];
+                $data['field1_title'] = $this->language->get('field1_title'); // Name title
+                $data['field2_status'] = intval($xd_callback_setting['field2_status']); // Phone status
+                $this->field2_status = $data['field2_status'];
+                $data['field2_title'] = $this->language->get('field2_title'); // Phone title
+                $data['field3_status'] = intval($xd_callback_setting['field3_status']); // Message status
+                $this->field3_status = $data['field3_status'];
+                $data['field3_title'] = $this->language->get('field3_title'); // Message title
+
+                // Captcha
+                $data['captcha'] = $xd_callback_setting['captcha']; // Captcha
+                $this->captcha = $data['captcha'];
+                $data['captcha_class'] = $xd_callback_setting['captcha'];
+                if ($this->config->get($data['captcha'] . '_status')) {
+                    $data['captcha'] = $this->load->controller('captcha/' . $data['captcha'], $this->error);
+                }
+
+                // Agreement
+                $data['agree_status'] = intval($xd_callback_setting['agree_status']);
+                if ($data['agree_status'] !== 0) {
+                    $this->load->model('catalog/information');
+                    $information_info = $this->model_catalog_information->getInformation($data['agree_status']);
+                    if ($information_info) {
+                        $data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information', 'information_id=' . $data['agree_status'], 'SSL'), $information_info['title']);
+                    } else {
+                        $data['text_agree'] = '';
+                    }
+                }
+
+                $data['spam_protection'] = boolval($xd_callback_setting['spam_protection']);
+                $this->spam_protection = $data['spam_protection'];
+                $data['validation_type'] = $xd_callback_setting['validation_type'];
+
+                // Styles
+                $data['button_color'] = $xd_callback_setting['button_color'];
+                $data['button_position'] = $xd_callback_setting['button_position'];
+                $data['modal_style'] = $xd_callback_setting['modal_style'];
+
+                // Analytics
+                $data['exan_status'] = boolval($xd_callback_setting['exan_status']);
+                $this->exan_status = $data['exan_status'];
+            }
+        }
+        return $this->load->view('default/template/module/xd_callback.tpl', $data);
+    }
+
     public function submit()
     {
-
-        if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+        if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->validate()) {
 
             $this->load->language('module/xd_callback');
             $json = array();
             $mail_text = '';
+
+            $json['data'] = $this->request->post;
 
             if (isset($this->request->post['xd_callback_name'])) {
                 $xd_callback_name = $this->request->post['xd_callback_name'];
@@ -171,7 +253,7 @@ class ControllerModuleXDZvonok extends Controller
             $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
             $mail->setTo($this->config->get('config_email'));
-            // $mail->setTo('domus159@gmail.com');
+            $mail->setTo('domus159@gmail.com');
             $mail->setFrom($from_email);
             $mail->setSender($sender_name);
             $mail->setSubject($mail_title);
@@ -186,7 +268,7 @@ class ControllerModuleXDZvonok extends Controller
             $this->response->addHeader('Content-Type: application/json');
             $this->response->setOutput(json_encode($json));
         } else {
-            $json['error'] = 'Smth wrong... Error sending';
+            $json['error'] = $this->error;
             $this->response->addHeader('Content-Type: application/json');
             $this->response->setOutput(json_encode($json));
         }
@@ -194,27 +276,74 @@ class ControllerModuleXDZvonok extends Controller
 
     protected function validate()
     {
-        if ((utf8_strlen($this->request->post['name']) < 1) || (utf8_strlen($this->request->post['name']) > 32)) {
-            $this->error['name'] = $this->language->get('error_name');
+        $xd_callback_setting = $this->config->get('xd_callback');
+        $this->load->language('module/xd_callback');
+
+        // Validate spam protection
+        $this->spam_protection = boolval($xd_callback_setting['spam_protection']);
+        if ($this->spam_protection && (strlen(trim($this->request->post['xd_callback_email'])) > 0 || strlen(trim($this->request->post['xd_callback_surname'])) > 0)) {
+            $this->error['message'] = $this->language->get('spam_protection');
+            $this->error['input'] = 'spam_protection';
+            return false;
         }
 
-        if (!preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $this->request->post['email'])) {
-            $this->error['email'] = $this->language->get('error_email');
+        // Validate name
+        $this->field1_status = intval($xd_callback_setting['field1_status']);
+        if ($this->field1_status === 2) {
+            if (strlen($this->request->post['xd_callback_name']) < 1 || strlen($this->request->post['xd_callback_name']) > 64) {
+                $this->error['message'] = $this->language->get('error_name');
+                $this->error['input'] = 'xd_callback_name';
+                return false;
+            }
         }
 
-        if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
-            $this->error['enquiry'] = $this->language->get('error_enquiry');
+        // Validate phone number
+        $this->field2_status = intval($xd_callback_setting['field2_status']);
+        if ($this->field2_status === 2) {
+            if ((utf8_strlen($this->request->post['xd_callback_phone']) < 9) || (utf8_strlen($this->request->post['xd_callback_phone']) > 20)) {
+                $this->error['message'] = $this->language->get('error_phone');
+                $this->error['input'] = 'xd_callback_phone';
+                return false;
+            }
+
+            $phone_number_validation_regex = "/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/";
+            if (!preg_match($phone_number_validation_regex, $this->request->post['xd_callback_phone'])) {
+                $this->error['message'] = $this->language->get('error_phone');
+                $this->error['input'] = 'xd_callback_phone';
+                return false;
+            }
         }
 
-        // Captcha
-        if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-            $captcha = $this->load->controller('captcha/' . $this->config->get('config_captcha') . '/validate');
-
-            if ($captcha) {
-                $this->error['captcha'] = $captcha;
+        // Validate message
+        $this->field3_status = intval($xd_callback_setting['field3_status']);
+        if ($this->field3_status === 2) {
+            if (strlen($this->request->post['xd_callback_message']) < 1 || strlen($this->request->post['xd_callback_message']) > 9000) {
+                $this->error['message'] = $this->language->get('error_message');
+                $this->error['input'] = 'xd_callback_message';
+                return false;
             }
         }
 
         return !$this->error;
+    }
+
+    public function validate_captcha()
+    {
+        $this->load->model('setting/setting');
+        $buyoneclick = $this->config->get('buyoneclick');
+        $buyoneclick_captcha = $buyoneclick['config_captcha'];
+        // var_dump($buyoneclick);
+        $json = array();
+        // Captcha
+        if (isset($buyoneclick_captcha) && $buyoneclick_captcha != '') {
+            $captcha = $this->load->controller('extension/captcha/' . $buyoneclick_captcha . '/validate');
+            if ($captcha) {
+                $json['error'] = $captcha;
+            } else {
+                $json['success'] = 'ok';
+            }
+        }
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
     }
 }

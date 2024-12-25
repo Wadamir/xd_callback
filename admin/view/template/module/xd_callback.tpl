@@ -54,141 +54,153 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            <div class="row" style="border-top: 1px solid #e8e8e8; padding-top:15px;">
+                            <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
                                 <div class="col-lg-6 col-xs-12">
-                                    <div class="row inline-input-group">
-                                        <label class="col-lg-3 control-label"><?php echo $field1_title; ?></label>
-                                        <div class="col-lg-9">
-                                            <select name="xd_callback[field1_status]" class="form-control">
-                                                <?php if ($xd_callback['field1_status'] == '1') { ?>
-                                                    <option value="0"><?php echo $text_disabled; ?></option>
-                                                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                                                    <option value="2"><?php echo $field_required; ?></option>
-                                                <?php } elseif ($xd_callback['field1_status'] == '2') { ?>
-                                                    <option value="0"><?php echo $text_disabled; ?></option>
-                                                    <option value="1"><?php echo $text_enabled; ?></option>
-                                                    <option value="2" selected="selected"><?php echo $field_required; ?></option>
-                                                <?php } else { ?>
-                                                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                                                    <option value="1"><?php echo $text_enabled; ?></option>
-                                                    <option value="2"><?php echo $field_required; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-xs-12">
-                                    <div class="row inline-input-group">
-                                        <label class="col-lg-3 control-label"><?php echo $field2_title; ?></label>
-                                        <div class="col-lg-9">
-                                            <select name="xd_callback[field2_status]" class="form-control">
-                                                <?php if ($xd_callback['field2_status'] == '1') { ?>
-                                                    <option value="0"><?php echo $text_disabled; ?></option>
-                                                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                                                    <option value="2"><?php echo $field_required; ?></option>
-                                                <?php } elseif ($xd_callback['field2_status'] == '2') { ?>
-                                                    <option value="0"><?php echo $text_disabled; ?></option>
-                                                    <option value="1"><?php echo $text_enabled; ?></option>
-                                                    <option value="2" selected="selected"><?php echo $field_required; ?></option>
-                                                <?php } else { ?>
-                                                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                                                    <option value="1"><?php echo $text_enabled; ?></option>
-                                                    <option value="2"><?php echo $field_required; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row" style="padding-top:15px;">
-                                <div class="col-lg-6 col-xs-12">
-                                    <div class="row inline-input-group">
-                                        <label class="col-lg-3 control-label"><?php echo $field3_title; ?></label>
-                                        <div class="col-lg-9">
-                                            <select name="xd_callback[field3_status]" class="form-control">
-                                                <?php if ($xd_callback['field3_status'] == '1') { ?>
-                                                    <option value="0"><?php echo $text_disabled; ?></option>
-                                                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                                                    <option value="2"><?php echo $field_required; ?></option>
-                                                <?php } elseif ($xd_callback['field3_status'] == '2') { ?>
-                                                    <option value="0"><?php echo $text_disabled; ?></option>
-                                                    <option value="1"><?php echo $text_enabled; ?></option>
-                                                    <option value="2" selected="selected"><?php echo $field_required; ?></option>
-                                                <?php } else { ?>
-                                                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                                                    <option value="1"><?php echo $text_enabled; ?></option>
-                                                    <option value="2"><?php echo $field_required; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-xs-12">
-                                    <div class="row inline-input-group">
-                                        <label class="col-lg-3 control-label"><?php echo $field4_title; ?></label>
-                                        <div class="col-lg-9">
-                                            <select name="xd_callback[captcha]" class="form-control">
-                                                <?php foreach ($captchas as $captcha) { ?>
-                                                    <?php if (!isset($xd_callback['captcha']) || $xd_callback['captcha'] === '') { ?>
-                                                        <option value="" selected="selected"><?php echo $text_disabled; ?></option>
-                                                    <?php } else { ?>
-                                                        <option value=""><?php echo $text_disabled; ?></option>
-                                                    <?php } ?>
-                                                    <?php if (isset($xd_callback['captcha']) && ($captcha['value'] === $xd_callback['captcha'])) { ?>
-                                                        <option value="<?php echo $captcha['value']; ?>" selected="selected"><?php echo $captcha['text']; ?></option>
-                                                    <?php } else { ?>
-                                                        <option value="<?php echo $captcha['value']; ?>"><?php echo $captcha['text']; ?></option>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row inline-input-group" style="padding-top:15px;">
-                                <label class="col-lg-3 control-label" for="agree_status"><?php echo $agree_title; ?></label>
-                                <div class="col-lg-9">
-                                    <select name="xd_callback[agree_status]" id="agree_status" class="form-control">
-                                        <option value="0"><?php echo $text_disabled; ?></option>
-                                        <?php foreach ($informations as $information) { ?>
-                                            <?php if ($information['information_id'] === $xd_callback['agree_status']) { ?>
-                                                <option value="<?php echo $information['information_id']; ?>" selected="selected"><?php echo $information['title']; ?></option>
+                                    <label class="control-label"><?php echo $field1_title; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[field1_status]" class="form-control custom">
+                                            <?php if ($xd_callback['field1_status'] == '1') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } elseif ($xd_callback['field1_status'] == '2') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2" selected="selected"><?php echo $field_required; ?></option>
                                             <?php } else { ?>
-                                                <option value="<?php echo $information['information_id']; ?>"><?php echo $information['title']; ?></option>
+                                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
                                             <?php } ?>
-                                        <?php } ?>
-                                    </select>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label"><?php echo $field2_title; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[field2_status]" class="form-control">
+                                            <?php if ($xd_callback['field2_status'] == '1') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } elseif ($xd_callback['field2_status'] == '2') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2" selected="selected"><?php echo $field_required; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row inline-input-group" style="padding-top:15px;">
-                                <label class="col-lg-3 control-label" for="validation_type"><?php echo $entry_validation_type; ?></label>
-                                <div class="col-lg-9">
-                                    <select name="xd_callback[validation_type]" id="validation_type" class="form-control">
-                                        <?php if ($xd_callback['validation_type'] == $value_validation_type1) { ?>
-                                            <option value="0"><?php echo $text_validation_type0; ?></option>
-                                            <option value="<?php echo $value_validation_type1; ?>" selected="selected"><?php echo $text_validation_type1; ?></option>
-                                            <option value="<?php echo $value_validation_type2; ?>"><?php echo $text_validation_type2; ?></option>
-                                        <?php } else if ($xd_callback['validation_type'] == $value_validation_type2) { ?>
-                                            <option value="0"><?php echo $text_validation_type0; ?></option>
-                                            <option value="<?php echo $value_validation_type1; ?>"><?php echo $text_validation_type1; ?></option>
-                                            <option value="<?php echo $value_validation_type2; ?>" selected="selected"><?php echo $text_validation_type2; ?></option>
-                                        <?php } else { ?>
-                                            <option value="0" selected="selected"><?php echo $text_validation_type0; ?></option>
-                                            <option value="<?php echo $value_validation_type1; ?>"><?php echo $text_validation_type1; ?></option>
-                                            <option value="<?php echo $value_validation_type2; ?>"><?php echo $text_validation_type2; ?></option>
-                                        <?php } ?>
-                                    </select>
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label"><?php echo $field3_title; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[field3_status]" class="form-control">
+                                            <?php if ($xd_callback['field3_status'] == '1') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } elseif ($xd_callback['field3_status'] == '2') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2" selected="selected"><?php echo $field_required; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label"><?php echo $field4_title; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[captcha]" class="form-control">
+                                            <?php if (!isset($xd_callback['captcha']) || $xd_callback['captcha'] === '') { ?>
+                                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                            <?php } ?>
+                                            <?php foreach ($captchas as $captcha) { ?>
+                                                <?php if (isset($xd_callback['captcha']) && ($captcha['value'] === $xd_callback['captcha'])) { ?>
+                                                    <option value="<?php echo $captcha['value']; ?>" selected="selected"><?php echo $captcha['text']; ?></option>
+                                                <?php } else { ?>
+                                                    <option value="<?php echo $captcha['value']; ?>"><?php echo $captcha['text']; ?></option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row" style="padding-top:15px; margin-top: 15px; border-top: 1px solid #e8e8e8;">
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label" for="agree_status"><?php echo $agree_title; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[agree_status]" id="agree_status" class="form-control">
+                                            <option value="0"><?php echo $text_disabled; ?></option>
+                                            <?php foreach ($informations as $information) { ?>
+                                                <?php if ($information['information_id'] === $xd_callback['agree_status']) { ?>
+                                                    <option value="<?php echo $information['information_id']; ?>" selected="selected"><?php echo $information['title']; ?></option>
+                                                <?php } else { ?>
+                                                    <option value="<?php echo $information['information_id']; ?>"><?php echo $information['title']; ?></option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label" for="spam_protection"><?php echo $entry_spam_protection; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[spam_protection]" id="spam_protection" class="form-control">
+                                            <?php if ($xd_callback['spam_protection'] === '0') { ?>
+                                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label" for="validation_type"><?php echo $entry_validation_type; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[validation_type]" id="validation_type" class="form-control">
+                                            <?php if ($xd_callback['validation_type'] == $value_validation_type1) { ?>
+                                                <option value="0"><?php echo $text_validation_type0; ?></option>
+                                                <option value="<?php echo $value_validation_type1; ?>" selected="selected"><?php echo $text_validation_type1; ?></option>
+                                                <option value="<?php echo $value_validation_type2; ?>"><?php echo $text_validation_type2; ?></option>
+                                            <?php } else if ($xd_callback['validation_type'] == $value_validation_type2) { ?>
+                                                <option value="0"><?php echo $text_validation_type0; ?></option>
+                                                <option value="<?php echo $value_validation_type1; ?>"><?php echo $text_validation_type1; ?></option>
+                                                <option value="<?php echo $value_validation_type2; ?>" selected="selected"><?php echo $text_validation_type2; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0" selected="selected"><?php echo $text_validation_type0; ?></option>
+                                                <option value="<?php echo $value_validation_type1; ?>"><?php echo $text_validation_type1; ?></option>
+                                                <option value="<?php echo $value_validation_type2; ?>"><?php echo $text_validation_type2; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
                                 <div class="col-xs-12">
                                     <fieldset class="checkbox-switcher">
                                         <span class="checkbox-switcher-title h6"><?php echo $entry_status; ?></span>
                                         <div class="form-check-switcher-wrapper switcher-on-off">
                                             <span class="custom-checkbox-input-switcher-before"><?php echo $text_disabled; ?></span>
                                             <div class="form-check form-check-inline form-check-switcher">
-                                                <input type="checkbox" name="xd_callback[input-status]" value="1" id="input-status" class="custom-checkbox-input-switcher" <?php echo (isset($xd_callback['input-status']) && $xd_callback['input-status'] === '1') ? 'checked="checked"' : '' ?> />
-                                                <label class="custom-checkbox-input-switcher-label" for="input-status"><?php echo $entry_status; ?></label>
+                                                <input type="checkbox" name="xd_callback[module_xd_callback_status]" value="1" id="module_xd_callback_status" class="custom-checkbox-input-switcher" <?php echo (isset($xd_callback['module_xd_callback_status']) && $xd_callback['module_xd_callback_status'] === '1') ? 'checked="checked"' : '' ?> />
+                                                <label class="custom-checkbox-input-switcher-label" for="module_xd_callback_status"><?php echo $entry_status; ?></label>
                                             </div>
                                             <span class="custom-checkbox-input-switcher-after"><?php echo $text_enabled; ?></span>
                                         </div>
@@ -226,6 +238,30 @@
                                     </a>
                                 </div>
                             </div>
+                            <hr class="main" />
+                            <div class="row inline-input-group">
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label" for="button_position"><?php echo $tab_styles_button_position; ?></label>
+                                    <div class="custom-select">
+                                        <select name="xd_callback[button_position]" id="button_position" class="form-control">
+                                            <option value="hide" <?php echo (isset($xd_callback['button_position']) && $xd_callback['button_position'] === 'hide') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_hide; ?></option>
+                                            <option value="top_left" <?php echo (isset($xd_callback['button_position']) && $xd_callback['button_position'] === 'top_left') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_top_left; ?></option>
+                                            <option value="top_right" <?php echo (isset($xd_callback['button_position']) && $xd_callback['button_position'] === 'top_right') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_top_right; ?></option>
+                                            <option value="bottom_left" <?php echo (isset($xd_callback['button_position']) && $xd_callback['button_position'] === 'bottom_left') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_bottom_left; ?></option>
+                                            <option value="bottom_right" <?php echo (isset($xd_callback['button_position']) && $xd_callback['button_position'] === 'bottom_right') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_bottom_right; ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label" for="modal_style"><?php echo $tab_styles_modal_style; ?></label>
+                                    <div class="custom-select">
+                                        <select name="xd_callback[modal_style]" id="modal_style" class="form-control">
+                                            <option value="default" <?php echo (isset($xd_callback['modal_style']) && $xd_callback['modal_style'] === 'default') ? ' selected' : '' ?>><?php echo $tab_styles_modal_style_default; ?></option>
+                                            <option value="modal-custom" <?php echo (isset($xd_callback['modal_style']) && $xd_callback['modal_style'] === 'modal-custom') ? ' selected' : '' ?>><?php echo $tab_styles_modal_style_custom; ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,7 +275,8 @@
                     <div class="panel panel-default" style="border-top:0;">
                         <!---------- Analytics settings ------------>
                         <div class="panel-body">
-                            <!---------- Extended analytics ------------>
+                            <!---------- Extended analytics (sourcebuster.js) ------------>
+                            <h3 class="text-center mb-15"><?php echo $exan_form_title; ?></h3>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <fieldset class="checkbox-switcher">
@@ -257,7 +294,7 @@
                             </div>
                             <!---------- Google.com ------------>
                             <hr class="main" />
-                            <h3 class="text-center"><?php echo $google_form_title; ?></h3>
+                            <h3 class="text-center mb-15"><?php echo $google_form_title; ?></h3>
                             <div class="row">
                                 <div class="col-sm-6 col-xs-12">
                                     <label for="google_category_btn"><?php echo $google_category_btn_title; ?></label>
@@ -305,7 +342,7 @@
                             </div>
                             <!---------- Yandex.ru ------------>
                             <hr class="main" />
-                            <h3 class="text-center"><?php echo $ya_form_title; ?></h3>
+                            <h3 class="text-center mb-15"><?php echo $ya_form_title; ?></h3>
                             <div class="row">
                                 <div class="col-sm-6 col-xs-12">
                                     <label for="ya_counter"><?php echo $ya_counter_title; ?></label>

@@ -1,10 +1,41 @@
-#xd_callback_phone_button {
-    bottom: 25px;
-    left: 160px;
+.input-group-protected {
+    display: none !important;
+}
+
+.button_wrapper #xd_callback_phone_button {
     position: fixed;
     z-index: 999;
+
     margin: 0;
     padding: 0;
+}
+
+.button_wrapper.bottom_right #xd_callback_phone_button {
+    top: auto;
+    bottom: 20px;
+    left: auto;
+    right: -15px;
+}
+
+.button_wrapper.bottom_left #xd_callback_phone_button {
+    top: auto;
+    bottom: 20px;
+    left: 160px;
+    right: auto;
+}
+
+.button_wrapper.top_right #xd_callback_phone_button {
+    top: 120px;
+    bottom: auto;
+    left: auto;
+    right: -15px;
+}
+
+.button_wrapper.top_left #xd_callback_phone_button {
+    top: 120px;
+    bottom: auto;
+    left: 160px;
+    right: auto;
 }
 
 .img-circle {
@@ -305,4 +336,114 @@
         transform: rotate(0deg) scale(0.7) skew(1deg);
         opacity: .2;
     }
+}
+
+/* Modal styles */
+.modal.modal-custom .modal-dialog .modal-content {
+    border-radius: 16px;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-header,
+.modal.modal-custom .modal-dialog .modal-content .modal-body,
+.modal.modal-custom .modal-dialog .modal-content .modal-footer {
+    padding: 24px 24px 0 24px;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-footer {
+    padding: 24px 24px 24px 24px;
+}
+
+#xd_callback_success.modal.modal-custom .modal-dialog .modal-content .modal-body,
+#xd_callback_success.modal.modal-custom .modal-dialog .modal-content .modal-footer {
+    padding-top: 0;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-header,
+.modal.modal-custom .modal-dialog .modal-content .modal-footer {
+    border-color: transparent;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body input {
+    /* border-color: #C4C5C7; */
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 140%;
+    height: 44px;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body textarea {
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .input-group-addon {
+    border-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 11px;
+    font-size: 14px;
+    line-height: 140%;
+    height: 44px;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .input-group-addon>svg {
+    margin-bottom: -3px;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .information {
+    font-size: 14px;
+    line-height: 140%;
+    margin-bottom: 0;
+}
+
+/****** Captcha ******/
+.captcha>.form-group {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.captcha.basic_captcha>.form-group>label {
+    width: 100%;
+}
+
+.captcha.basic_captcha>.form-group>.col-sm-10 {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.captcha.basic_captcha>.form-group>.col-sm-10>input {
+    height: 35px !important;
+}
+
+.captcha.basic_captcha>.form-group>.col-sm-10>img {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: inline 1px solid #000;
+    outline: 1px solid #000;
+    outline-offset: -1px;
+}
+
+.captcha.google_captcha>.form-group>.col-sm-10 {
+    width: 100% !important;
+    margin-left: 0 !important;
+    text-align: center;
+}
+
+.captcha.google_captcha>.form-group>.col-sm-10>.g-recaptcha {
+    display: inline-block;
+    margin: 0 auto;
 }
