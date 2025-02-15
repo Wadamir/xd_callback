@@ -60,8 +60,8 @@
 
 /admin/view/stylesheet/*
 !/admin/view/stylesheet/
-/admin/view/stylesheet/xd_callback.css
-/admin/view/stylesheet/mini_phone_button.png
+!/admin/view/stylesheet/xd_callback.css
+!/admin/view/stylesheet/mini_phone_button.png
 
 /admin/view/stylesheet/css/*
 !/admin/view/stylesheet/css/
