@@ -9,10 +9,10 @@
         <operation>
             <search>
 				<![CDATA[
-					$data['telephone'] = $this->config->get('config_telephone');
+					$data['title']
 				]]>
 			</search>
-            <add position="after">
+            <add position="before">
 				<![CDATA[
                     /* xd_callback start */
 					$data['xd_callback'] = $this->config->get('xd_callback');

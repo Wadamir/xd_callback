@@ -109,6 +109,8 @@ class ControllerModuleXDCallback extends Controller
                 $mail_text .= $this->language->get('text_message') . $xd_callback_message . " \r\n";
             }
 
+            $mail_text .= " \r\n";
+
             if (!empty($this->request->server['REMOTE_ADDR'])) {
                 $ip = $this->request->server['REMOTE_ADDR'];
                 $mail_text .= $this->language->get('text_ip') . $ip . " \r\n";
