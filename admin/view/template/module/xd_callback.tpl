@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="container-fluid">
-        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-html">
+        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-xd_callback">
             <?php if ($error_warning) { ?>
                 <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
