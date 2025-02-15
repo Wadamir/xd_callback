@@ -253,7 +253,7 @@ class ControllerModuleXDCallback extends Controller
             $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
             $mail->setTo($this->config->get('config_email'));
-            $mail->setTo('domus159@gmail.com');
+            // $mail->setTo('domus159@gmail.com');
             $mail->setFrom($from_email);
             $mail->setSender($sender_name);
             $mail->setSubject($mail_title);
