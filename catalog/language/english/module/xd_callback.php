@@ -28,7 +28,7 @@ $_['text_ip']                       = 'IP-address: ';
 $_['text_forwarded_ip']             = 'Forwarded IP: ';
 $_['text_user_agent']               = 'User agent: ';
 $_['text_sender_name']              = 'XD Callback';
-$_['text_mail_title']               = 'xd_callback order from %s';
+$_['text_mail_title']               = '%s - Callback order in the store';
 
 // sourcebuster
 $_['sb_first_visit_title']          = 'First visit';

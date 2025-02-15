@@ -28,7 +28,7 @@ $_['text_ip']                       = 'IP-адрес: ';
 $_['text_forwarded_ip']             = 'Forwarded IP: ';
 $_['text_user_agent']               = 'User agent: ';
 $_['text_sender_name']              = 'XD Callback';
-$_['text_mail_title']               = 'Заказ обратного звонка в магазине %s';
+$_['text_mail_title']               = '%s - Заказ обратного звонка в магазине';
 
 // sourcebuster
 $_['sb_first_visit_title']          = 'Первый визит';
