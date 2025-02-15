@@ -9,7 +9,7 @@
         <operation>
             <search>
 				<![CDATA[
-					$data['title']
+					$data['analytics'] = array();
 				]]>
 			</search>
             <add position="before">
