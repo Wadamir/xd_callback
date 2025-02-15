@@ -242,7 +242,7 @@ class ControllerModuleXDCallback extends Controller
             // Private data end
 
             $from_email = 'xd_callback@' . $_SERVER['SERVER_NAME'];
-            $sender_name = $this->language->get('text_sender_name');
+            $sender_name = $this->config->get('config_name');
             $mail_title = sprintf($this->language->get('text_mail_title'), $this->config->get('config_name'));
 
             $mail = new Mail();
