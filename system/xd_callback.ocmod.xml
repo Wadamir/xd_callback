@@ -9,10 +9,10 @@
         <operation>
             <search>
 				<![CDATA[
-					$data['analytics'] = array();
+					$data['scripts'] = $this->document->getScripts();
 				]]>
 			</search>
-            <add position="before">
+            <add position="after">
 				<![CDATA[
                     /* xd_callback start */
 					$data['xd_callback'] = $this->config->get('xd_callback');
