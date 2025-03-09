@@ -47,7 +47,7 @@ $_['success_field_tooltip']         = 'Допустимо использоват
 
 // Success
 $_['entry_success_type']            = 'После успешной отправки запроса';
-$_['entry_success_utm']             = 'UTM метка будет добавлена на страницу успешной отправки (по умолчанию: utm_source=xd_callback)';
+$_['entry_success_utm']             = 'UTM метка будет добавлена на страницу успешной отправки (оставьте поле пустым, чтобы отключить)';
 $_['success_type0']                 = 'Всплывающее окно (без редиректа)';
 $_['success_type1']                 = 'Переход на стандартную страницу opencart - "index.php?route=checkout/success"';
 $_['success_type_tooltip']          = 'По умолчанию - всплывающее окно без редиректа.';

@@ -75,9 +75,16 @@ document.addEventListener("DOMContentLoaded", function () {
                             }
                         });
                     } else {
-                        let successUtm = document.getElementById('xd_callback_success_utm').value;
+                        let successUtm = '';
+                        if (document.getElementById('xd_callback_success_utm')) {
+                            successUtm = document.getElementById('xd_callback_success_utm').value;
+                        }
+                        successUtm = successUtm.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').trim();
                         console.log('successUtm - ', successUtm);
-                        let successUrl = '/index.php?route=checkout/success&' + successUtm;
+                        let successUrl = '/index.php?route=checkout/success';
+                        if (successUtm !== '') {
+                            successUrl = '/index.php?route=checkout/success&' + successUtm;
+                        }
                         window.location.href = successUrl;
                     }
                 }
