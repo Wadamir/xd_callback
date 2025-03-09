@@ -43,8 +43,15 @@ $_['entry_spam_protection']         = 'Additional spam protection';
 // Entry
 $_['entry_button_name']             = 'Text on button';
 $_['entry_status']                  = 'Enable XD Callback module';
-$_['entry_success_field']           = 'Success window text';
+$_['entry_success_field']           = 'Success pop-up window text';
 $_['success_field_tooltip']         = 'Using HTML tags is allowed';
+
+// Success
+$_['entry_success_type']            = 'After successfully sending the request';
+$_['entry_success_utm']             = 'UTM tag will be added to the success page (by default: utm_source=xd_callback)';
+$_['success_type0']                 = 'Pop-up window (without redirect)';
+$_['success_type1']                 = 'Go to the standard opencart success page - "index.php?route=checkout/success"';
+$_['success_type_tooltip']          = 'By default - popup without redirect';
 
 // Tab Styles
 $_['tab_styles']                                = 'Styles';

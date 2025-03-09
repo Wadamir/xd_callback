@@ -44,36 +44,38 @@
                         <div class="modal-body">
                             <div class="col-xl-12">
                                 <div id="source" class="hide" style="display:none">
-                                    <input id="sb_first_typ" class="hidden" type="text" name="sb_first_typ" value="">
-                                    <input id="sb_first_src" class="hidden" type="text" name="sb_first_src" value="">
-                                    <input id="sb_first_mdm" class="hidden" type="text" name="sb_first_mdm" value="">
-                                    <input id="sb_first_cmp" class="hidden" type="text" name="sb_first_cmp" value="">
-                                    <input id="sb_first_cnt" class="hidden" type="text" name="sb_first_cnt" value="">
-                                    <input id="sb_first_trm" class="hidden" type="text" name="sb_first_trm" value="">
+                                    <input id="xd_callback_sb_first_typ" class="hidden" type="text" name="xd_callback_sb_first_typ" value="">
+                                    <input id="xd_callback_sb_first_src" class="hidden" type="text" name="xd_callback_sb_first_src" value="">
+                                    <input id="xd_callback_sb_first_mdm" class="hidden" type="text" name="xd_callback_sb_first_mdm" value="">
+                                    <input id="xd_callback_sb_first_cmp" class="hidden" type="text" name="xd_callback_sb_first_cmp" value="">
+                                    <input id="xd_callback_sb_first_cnt" class="hidden" type="text" name="xd_callback_sb_first_cnt" value="">
+                                    <input id="xd_callback_sb_first_trm" class="hidden" type="text" name="xd_callback_sb_first_trm" value="">
 
-                                    <input id="sb_current_typ" class="hidden" type="text" name="sb_current_typ" value="">
-                                    <input id="sb_current_src" class="hidden" type="text" name="sb_current_src" value="">
-                                    <input id="sb_current_mdm" class="hidden" type="text" name="sb_current_mdm" value="">
-                                    <input id="sb_current_cmp" class="hidden" type="text" name="sb_current_cmp" value="">
-                                    <input id="sb_current_cnt" class="hidden" type="text" name="sb_current_cnt" value="">
-                                    <input id="sb_current_trm" class="hidden" type="text" name="sb_current_trm" value="">
+                                    <input id="xd_callback_sb_current_typ" class="hidden" type="text" name="xd_callback_sb_current_typ" value="">
+                                    <input id="xd_callback_sb_current_src" class="hidden" type="text" name="xd_callback_sb_current_src" value="">
+                                    <input id="xd_callback_sb_current_mdm" class="hidden" type="text" name="xd_callback_sb_current_mdm" value="">
+                                    <input id="xd_callback_sb_current_cmp" class="hidden" type="text" name="xd_callback_sb_current_cmp" value="">
+                                    <input id="xd_callback_sb_current_cnt" class="hidden" type="text" name="xd_callback_sb_current_cnt" value="">
+                                    <input id="xd_callback_sb_current_trm" class="hidden" type="text" name="xd_callback_sb_current_trm" value="">
 
-                                    <input id="sb_first_add_fd" class="hidden" type="text" name="sb_first_add_fd" value="">
-                                    <input id="sb_first_add_ep" class="hidden" type="text" name="sb_first_add_ep" value="">
-                                    <input id="sb_first_add_rf" class="hidden" type="text" name="sb_first_add_rf" value="">
+                                    <input id="xd_callback_sb_first_add_fd" class="hidden" type="text" name="xd_callback_sb_first_add_fd" value="">
+                                    <input id="xd_callback_sb_first_add_ep" class="hidden" type="text" name="xd_callback_sb_first_add_ep" value="">
+                                    <input id="xd_callback_sb_first_add_rf" class="hidden" type="text" name="xd_callback_sb_first_add_rf" value="">
 
-                                    <input id="sb_current_add_fd" class="hidden" type="text" name="sb_current_add_fd" value="">
-                                    <input id="sb_current_add_ep" class="hidden" type="text" name="sb_current_add_ep" value="">
-                                    <input id="sb_current_add_rf" class="hidden" type="text" name="sb_current_add_rf" value="">
+                                    <input id="xd_callback_sb_current_add_fd" class="hidden" type="text" name="xd_callback_sb_current_add_fd" value="">
+                                    <input id="xd_callback_sb_current_add_ep" class="hidden" type="text" name="xd_callback_sb_current_add_ep" value="">
+                                    <input id="xd_callback_sb_current_add_rf" class="hidden" type="text" name="xd_callback_sb_current_add_rf" value="">
 
-                                    <input id="sb_session_pgs" class="hidden" type="text" name="sb_session_pgs" value="">
-                                    <input id="sb_session_cpg" class="hidden" type="text" name="sb_session_cpg" value="">
+                                    <input id="xd_callback_sb_session_pgs" class="hidden" type="text" name="xd_callback_sb_session_pgs" value="">
+                                    <input id="xd_callback_sb_session_cpg" class="hidden" type="text" name="xd_callback_sb_session_cpg" value="">
 
-                                    <input id="sb_udata_vst" class="hidden" type="text" name="sb_udata_vst" value="">
-                                    <input id="sb_udata_uip" class="hidden" type="text" name="sb_udata_uip" value="">
-                                    <input id="sb_udata_uag" class="hidden" type="text" name="sb_udata_uag" value="">
-                                    <input id="sb_promo_code" class="hidden" type="text" name="sb_promo_code" value="">
+                                    <input id="xd_callback_sb_udata_vst" class="hidden" type="text" name="xd_callback_sb_udata_vst" value="">
+                                    <input id="xd_callback_sb_udata_uip" class="hidden" type="text" name="xd_callback_sb_udata_uip" value="">
+                                    <input id="xd_callback_sb_udata_uag" class="hidden" type="text" name="xd_callback_sb_udata_uag" value="">
+                                    <input id="xd_callback_sb_promo_code" class="hidden" type="text" name="xd_callback_sb_promo_code" value="">
                                 </div>
+                                <input id="xd_callback_success_type" class="hidden" type="text" name="xd_callback_success_type" value="<?= $success_type ?>">
+                                <input id="xd_callback_success_utm" class="hidden" type="text" name="xd_callback_success_utm" value="<?= $success_utm ?>">
                                 <?php if ($field1_status > 0) { ?>
                                     <div class="input-group<?= ($field1_status === 2) ? ' has-warning' : '' ?>">
                                         <span class="input-group-addon">
@@ -172,36 +174,36 @@
 
             function placeData(sb) {
                 // console.log(sb);
-                document.getElementById('sb_first_typ').value = sb.first.typ;
-                document.getElementById('sb_first_src').value = sb.first.src;
-                document.getElementById('sb_first_mdm').value = sb.first.mdm;
-                document.getElementById('sb_first_cmp').value = sb.first.cmp;
-                document.getElementById('sb_first_cnt').value = sb.first.cnt;
-                document.getElementById('sb_first_trm').value = sb.first.trm;
+                document.getElementById('xd_callback_sb_first_typ').value = sb.first.typ;
+                document.getElementById('xd_callback_sb_first_src').value = sb.first.src;
+                document.getElementById('xd_callback_sb_first_mdm').value = sb.first.mdm;
+                document.getElementById('xd_callback_sb_first_cmp').value = sb.first.cmp;
+                document.getElementById('xd_callback_sb_first_cnt').value = sb.first.cnt;
+                document.getElementById('xd_callback_sb_first_trm').value = sb.first.trm;
 
-                document.getElementById('sb_current_typ').value = sb.current.typ;
-                document.getElementById('sb_current_src').value = sb.current.src;
-                document.getElementById('sb_current_mdm').value = sb.current.mdm;
-                document.getElementById('sb_current_cmp').value = sb.current.cmp;
-                document.getElementById('sb_current_cnt').value = sb.current.cnt;
-                document.getElementById('sb_current_trm').value = sb.current.trm;
+                document.getElementById('xd_callback_sb_current_typ').value = sb.current.typ;
+                document.getElementById('xd_callback_sb_current_src').value = sb.current.src;
+                document.getElementById('xd_callback_sb_current_mdm').value = sb.current.mdm;
+                document.getElementById('xd_callback_sb_current_cmp').value = sb.current.cmp;
+                document.getElementById('xd_callback_sb_current_cnt').value = sb.current.cnt;
+                document.getElementById('xd_callback_sb_current_trm').value = sb.current.trm;
 
-                document.getElementById('sb_first_add_fd').value = sb.first_add.fd;
-                document.getElementById('sb_first_add_ep').value = sb.first_add.ep;
-                document.getElementById('sb_first_add_rf').value = sb.first_add.rf;
+                document.getElementById('xd_callback_sb_first_add_fd').value = sb.first_add.fd;
+                document.getElementById('xd_callback_sb_first_add_ep').value = sb.first_add.ep;
+                document.getElementById('xd_callback_sb_first_add_rf').value = sb.first_add.rf;
 
-                document.getElementById('sb_current_add_fd').value = sb.current_add.fd;
-                document.getElementById('sb_current_add_ep').value = sb.current_add.ep;
-                document.getElementById('sb_current_add_rf').value = sb.current_add.rf;
+                document.getElementById('xd_callback_sb_current_add_fd').value = sb.current_add.fd;
+                document.getElementById('xd_callback_sb_current_add_ep').value = sb.current_add.ep;
+                document.getElementById('xd_callback_sb_current_add_rf').value = sb.current_add.rf;
 
-                document.getElementById('sb_session_pgs').value = sb.session.pgs;
-                document.getElementById('sb_session_cpg').value = sb.session.cpg;
+                document.getElementById('xd_callback_sb_session_pgs').value = sb.session.pgs;
+                document.getElementById('xd_callback_sb_session_cpg').value = sb.session.cpg;
 
-                document.getElementById('sb_udata_vst').value = sb.udata.vst;
-                document.getElementById('sb_udata_uip').value = sb.udata.uip;
-                document.getElementById('sb_udata_uag').value = sb.udata.uag;
+                document.getElementById('xd_callback_sb_udata_vst').value = sb.udata.vst;
+                document.getElementById('xd_callback_sb_udata_uip').value = sb.udata.uip;
+                document.getElementById('xd_callback_sb_udata_uag').value = sb.udata.uag;
 
-                document.getElementById('sb_promo_code').value = sb.promo.code;
+                document.getElementById('xd_callback_sb_promo_code').value = sb.promo.code;
             }
         <?php } ?>
     </script>

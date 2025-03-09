@@ -50,8 +50,15 @@ class ControllerModuleXDCallback extends Controller
         // Entry
         $data['entry_button_name'] = $this->language->get('entry_button_name');
         $data['entry_status'] = $this->language->get('entry_status');
+        $data['entry_redirect'] = $this->language->get('entry_redirect');
         $data['entry_success_field'] = $this->language->get('entry_success_field');
         $data['success_field_tooltip'] = htmlspecialchars($this->language->get('success_field_tooltip'));
+        // Success
+        $data['entry_success_type'] = $this->language->get('entry_success_type');
+        $data['entry_success_utm'] = $this->language->get('entry_success_utm');
+        $data['success_type0'] = $this->language->get('success_type0');
+        $data['success_type1'] = $this->language->get('success_type1');
+        $data['success_type_tooltip'] = $this->language->get('success_type_tooltip');
 
         // Tab Styles
         $data['tab_styles'] = $this->language->get('tab_styles');

@@ -42,8 +42,15 @@ $_['entry_spam_protection']        = 'Дополнительная защита 
 // Entry
 $_['entry_button_name']             = 'Текст на кнопке';
 $_['entry_status']                  = 'Статус модуля XD Callback';
-$_['entry_success_field']           = 'Текст успешной отправки';
+$_['entry_success_field']           = 'Текст успешной отправки во всплывающем окне';
 $_['success_field_tooltip']         = 'Допустимо использовать html-теги';
+
+// Success
+$_['entry_success_type']            = 'После успешной отправки запроса';
+$_['entry_success_utm']             = 'UTM метка будет добавлена на страницу успешной отправки (по умолчанию: utm_source=xd_callback)';
+$_['success_type0']                 = 'Всплывающее окно (без редиректа)';
+$_['success_type1']                 = 'Переход на стандартную страницу opencart - "index.php?route=checkout/success"';
+$_['success_type_tooltip']          = 'По умолчанию - всплывающее окно без редиректа.';
 
 // Tab Styles
 $_['tab_styles']                                = 'Стили';

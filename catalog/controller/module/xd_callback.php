@@ -71,6 +71,10 @@ class ControllerModuleXDCallback extends Controller
                 $this->spam_protection = $data['spam_protection'];
                 $data['validation_type'] = $xd_callback_setting['validation_type'];
 
+                // Success
+                $data['success_type'] = (isset($xd_callback_setting['success_type'])) ? $xd_callback_setting['success_type'] : 0;
+                $data['success_utm'] = (isset($xd_callback_setting['success_utm'])) ? 'utm_source=' . trim($xd_callback_setting['success_utm']) : 'utm_source=xd_callback';
+
                 // Styles
                 $data['button_color'] = $xd_callback_setting['button_color'];
                 $data['button_position'] = $xd_callback_setting['button_position'];
@@ -111,6 +115,8 @@ class ControllerModuleXDCallback extends Controller
 
             $mail_text .= " \r\n";
 
+            // Private data
+            $mail_text .= " \r\n" . $this->language->get('xd_callback_sb_private_title') . " \r\n";
             if (!empty($this->request->server['REMOTE_ADDR'])) {
                 $ip = $this->request->server['REMOTE_ADDR'];
                 $mail_text .= $this->language->get('text_ip') . $ip . " \r\n";
@@ -129,117 +135,107 @@ class ControllerModuleXDCallback extends Controller
                 $mail_text .= $this->language->get('text_user_agent') . $user_agent . " \r\n";
             }
 
+            if (isset($this->request->post['xd_callback_sb_udata_vst']) && $this->request->post['xd_callback_sb_udata_vst'] != '') {
+                $xd_callback_sb_udata_vst = $this->request->post['xd_callback_sb_udata_vst'];
+                $mail_text .= $this->language->get('xd_callback_sb_udata_vst') . $xd_callback_sb_udata_vst . " \r\n";
+            }
+            if (isset($this->request->post['xd_callback_sb_promo_code']) && $this->request->post['xd_callback_sb_promo_code'] != '' && $this->request->post['xd_callback_sb_promo_code'] != 'undefined') {
+                $xd_callback_sb_promo_code = $this->request->post['xd_callback_sb_promo_code'];
+                $mail_text .= $this->language->get('xd_callback_sb_promo_code') . $xd_callback_sb_promo_code . " \r\n";
+            }
+            // Private data end
+
             // Source first visit
-            $mail_text .= " \r\n" . $this->language->get('sb_first_visit_title') . " \r\n";
-            if (isset($this->request->post['sb_first_typ']) && $this->request->post['sb_first_typ'] != '') {
-                $sb_first_typ = $this->request->post['sb_first_typ'];
-                $mail_text .= $this->language->get('sb_first_typ') . $sb_first_typ . " \r\n";
+            $mail_text .= " \r\n" . $this->language->get('xd_callback_sb_first_visit_title') . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_typ']) && $this->request->post['xd_callback_sb_first_typ'] != '') {
+                $xd_callback_sb_first_typ = $this->request->post['xd_callback_sb_first_typ'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_typ') . $xd_callback_sb_first_typ . " \r\n";
             }
-            if (isset($this->request->post['sb_first_src']) && $this->request->post['sb_first_src'] != '') {
-                $sb_first_src = $this->request->post['sb_first_src'];
-                $mail_text .= $this->language->get('sb_first_src') . $sb_first_src . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_src']) && $this->request->post['xd_callback_sb_first_src'] != '') {
+                $xd_callback_sb_first_src = $this->request->post['xd_callback_sb_first_src'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_src') . $xd_callback_sb_first_src . " \r\n";
             }
-            if (isset($this->request->post['sb_first_mdm']) && $this->request->post['sb_first_mdm'] != '') {
-                $sb_first_mdm = $this->request->post['sb_first_mdm'];
-                $mail_text .= $this->language->get('sb_first_mdm') . $sb_first_mdm . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_mdm']) && $this->request->post['xd_callback_sb_first_mdm'] != '') {
+                $xd_callback_sb_first_mdm = $this->request->post['xd_callback_sb_first_mdm'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_mdm') . $xd_callback_sb_first_mdm . " \r\n";
             }
-            if (isset($this->request->post['sb_first_cmp']) && $this->request->post['sb_first_cmp'] != '') {
-                $sb_first_cmp = $this->request->post['sb_first_cmp'];
-                $mail_text .= $this->language->get('sb_first_cmp') . $sb_first_cmp . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_cmp']) && $this->request->post['xd_callback_sb_first_cmp'] != '') {
+                $xd_callback_sb_first_cmp = $this->request->post['xd_callback_sb_first_cmp'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_cmp') . $xd_callback_sb_first_cmp . " \r\n";
             }
-            if (isset($this->request->post['sb_first_cnt']) && $this->request->post['sb_first_cnt'] != '') {
-                $sb_first_cnt = $this->request->post['sb_first_cnt'];
-                $mail_text .= $this->language->get('sb_first_cnt') . $sb_first_cnt . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_cnt']) && $this->request->post['xd_callback_sb_first_cnt'] != '') {
+                $xd_callback_sb_first_cnt = $this->request->post['xd_callback_sb_first_cnt'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_cnt') . $xd_callback_sb_first_cnt . " \r\n";
             }
-            if (isset($this->request->post['sb_first_trm']) && $this->request->post['sb_first_trm'] != '') {
-                $sb_first_trm = $this->request->post['sb_first_trm'];
-                $mail_text .= $this->language->get('sb_first_trm') . $sb_first_trm . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_trm']) && $this->request->post['xd_callback_sb_first_trm'] != '') {
+                $xd_callback_sb_first_trm = $this->request->post['xd_callback_sb_first_trm'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_trm') . $xd_callback_sb_first_trm . " \r\n";
             }
-            if (isset($this->request->post['sb_first_add_fd']) && $this->request->post['sb_first_add_fd'] != '') {
-                $sb_first_add_fd = $this->request->post['sb_first_add_fd'];
-                $mail_text .= $this->language->get('sb_first_add_fd') . $sb_first_add_fd . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_add_fd']) && $this->request->post['xd_callback_sb_first_add_fd'] != '') {
+                $xd_callback_sb_first_add_fd = $this->request->post['xd_callback_sb_first_add_fd'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_add_fd') . $xd_callback_sb_first_add_fd . " \r\n";
             }
-            if (isset($this->request->post['sb_first_add_ep']) && $this->request->post['sb_first_add_ep'] != '') {
-                $sb_first_add_ep = $this->request->post['sb_first_add_ep'];
-                $mail_text .= $this->language->get('sb_first_add_ep') . $sb_first_add_ep . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_add_ep']) && $this->request->post['xd_callback_sb_first_add_ep'] != '') {
+                $xd_callback_sb_first_add_ep = $this->request->post['xd_callback_sb_first_add_ep'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_add_ep') . $xd_callback_sb_first_add_ep . " \r\n";
             }
-            if (isset($this->request->post['sb_first_add_rf']) && $this->request->post['sb_first_add_rf'] != '') {
-                $sb_first_add_rf = $this->request->post['sb_first_add_rf'];
-                $mail_text .= $this->language->get('sb_first_add_rf') . $sb_first_add_rf . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_first_add_rf']) && $this->request->post['xd_callback_sb_first_add_rf'] != '') {
+                $xd_callback_sb_first_add_rf = $this->request->post['xd_callback_sb_first_add_rf'];
+                $mail_text .= $this->language->get('xd_callback_sb_first_add_rf') . $xd_callback_sb_first_add_rf . " \r\n";
             }
             // Source first visit end
 
             // Source current visit
-            $mail_text .= " \r\n" . $this->language->get('sb_current_visit_title') . " \r\n";
-            if (isset($this->request->post['sb_current_typ']) && $this->request->post['sb_current_typ'] != '') {
-                $sb_current_typ = $this->request->post['sb_current_typ'];
-                $mail_text .= $this->language->get('sb_current_typ') . $sb_current_typ . " \r\n";
+            $mail_text .= " \r\n" . $this->language->get('xd_callback_sb_current_visit_title') . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_typ']) && $this->request->post['xd_callback_sb_current_typ'] != '') {
+                $xd_callback_sb_current_typ = $this->request->post['xd_callback_sb_current_typ'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_typ') . $xd_callback_sb_current_typ . " \r\n";
             }
-            if (isset($this->request->post['sb_current_src']) && $this->request->post['sb_current_src'] != '') {
-                $sb_current_src = $this->request->post['sb_current_src'];
-                $mail_text .= $this->language->get('sb_current_src') . $sb_current_src . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_src']) && $this->request->post['xd_callback_sb_current_src'] != '') {
+                $xd_callback_sb_current_src = $this->request->post['xd_callback_sb_current_src'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_src') . $xd_callback_sb_current_src . " \r\n";
             }
-            if (isset($this->request->post['sb_current_mdm']) && $this->request->post['sb_current_mdm'] != '') {
-                $sb_current_mdm = $this->request->post['sb_current_mdm'];
-                $mail_text .= $this->language->get('sb_current_mdm') . $sb_current_mdm . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_mdm']) && $this->request->post['xd_callback_sb_current_mdm'] != '') {
+                $xd_callback_sb_current_mdm = $this->request->post['xd_callback_sb_current_mdm'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_mdm') . $xd_callback_sb_current_mdm . " \r\n";
             }
-            if (isset($this->request->post['sb_current_cmp']) && $this->request->post['sb_current_cmp'] != '') {
-                $sb_current_cmp = $this->request->post['sb_current_cmp'];
-                $mail_text .= $this->language->get('sb_current_cmp') . $sb_current_cmp . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_cmp']) && $this->request->post['xd_callback_sb_current_cmp'] != '') {
+                $xd_callback_sb_current_cmp = $this->request->post['xd_callback_sb_current_cmp'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_cmp') . $xd_callback_sb_current_cmp . " \r\n";
             }
-            if (isset($this->request->post['sb_current_cnt']) && $this->request->post['sb_current_cnt'] != '') {
-                $sb_current_cnt = $this->request->post['sb_current_cnt'];
-                $mail_text .= $this->language->get('sb_current_cnt') . $sb_current_cnt . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_cnt']) && $this->request->post['xd_callback_sb_current_cnt'] != '') {
+                $xd_callback_sb_current_cnt = $this->request->post['xd_callback_sb_current_cnt'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_cnt') . $xd_callback_sb_current_cnt . " \r\n";
             }
-            if (isset($this->request->post['sb_current_trm']) && $this->request->post['sb_current_trm'] != '') {
-                $sb_current_trm = $this->request->post['sb_current_trm'];
-                $mail_text .= $this->language->get('sb_current_trm') . $sb_current_trm . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_trm']) && $this->request->post['xd_callback_sb_current_trm'] != '') {
+                $xd_callback_sb_current_trm = $this->request->post['xd_callback_sb_current_trm'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_trm') . $xd_callback_sb_current_trm . " \r\n";
             }
-            if (isset($this->request->post['sb_current_add_fd']) && $this->request->post['sb_current_add_fd'] != '') {
-                $sb_current_add_fd = $this->request->post['sb_current_add_fd'];
-                $mail_text .= $this->language->get('sb_current_add_fd') . $sb_current_add_fd . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_add_fd']) && $this->request->post['xd_callback_sb_current_add_fd'] != '') {
+                $xd_callback_sb_current_add_fd = $this->request->post['xd_callback_sb_current_add_fd'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_add_fd') . $xd_callback_sb_current_add_fd . " \r\n";
             }
-            if (isset($this->request->post['sb_current_add_ep']) && $this->request->post['sb_current_add_ep'] != '') {
-                $sb_current_add_ep = $this->request->post['sb_current_add_ep'];
-                $mail_text .= $this->language->get('sb_current_add_ep') . $sb_current_add_ep . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_add_ep']) && $this->request->post['xd_callback_sb_current_add_ep'] != '') {
+                $xd_callback_sb_current_add_ep = $this->request->post['xd_callback_sb_current_add_ep'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_add_ep') . $xd_callback_sb_current_add_ep . " \r\n";
             }
-            if (isset($this->request->post['sb_current_add_rf']) && $this->request->post['sb_current_add_rf'] != '') {
-                $sb_current_add_rf = $this->request->post['sb_current_add_rf'];
-                $mail_text .= $this->language->get('sb_current_add_rf') . $sb_current_add_rf . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_current_add_rf']) && $this->request->post['xd_callback_sb_current_add_rf'] != '') {
+                $xd_callback_sb_current_add_rf = $this->request->post['xd_callback_sb_current_add_rf'];
+                $mail_text .= $this->language->get('xd_callback_sb_current_add_rf') . $xd_callback_sb_current_add_rf . " \r\n";
             }
             // Source current visit end
 
             // Current session
-            $mail_text .= " \r\n" . $this->language->get('sb_session_title') . " \r\n";
-            if (isset($this->request->post['sb_session_pgs']) && $this->request->post['sb_session_pgs'] != '') {
-                $sb_session_pgs = $this->request->post['sb_session_pgs'];
-                $mail_text .= $this->language->get('sb_session_pgs') . $sb_session_pgs . " \r\n";
+            $mail_text .= " \r\n" . $this->language->get('xd_callback_sb_session_title') . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_session_pgs']) && $this->request->post['xd_callback_sb_session_pgs'] != '') {
+                $xd_callback_sb_session_pgs = $this->request->post['xd_callback_sb_session_pgs'];
+                $mail_text .= $this->language->get('xd_callback_sb_session_pgs') . $xd_callback_sb_session_pgs . " \r\n";
             }
-            if (isset($this->request->post['sb_session_cpg']) && $this->request->post['sb_session_cpg'] != '') {
-                $sb_session_cpg = $this->request->post['sb_session_cpg'];
-                $mail_text .= $this->language->get('sb_session_cpg') . $sb_session_cpg . " \r\n";
+            if (isset($this->request->post['xd_callback_sb_session_cpg']) && $this->request->post['xd_callback_sb_session_cpg'] != '') {
+                $xd_callback_sb_session_cpg = $this->request->post['xd_callback_sb_session_cpg'];
+                $mail_text .= $this->language->get('xd_callback_sb_session_cpg') . $xd_callback_sb_session_cpg . " \r\n";
             }
             // Current session end
-
-            // Private data
-            $mail_text .= " \r\n" . $this->language->get('sb_private_title') . " \r\n";
-            if (isset($this->request->post['sb_udata_vst']) && $this->request->post['sb_udata_vst'] != '') {
-                $sb_udata_vst = $this->request->post['sb_udata_vst'];
-                $mail_text .= $this->language->get('sb_udata_vst') . $sb_udata_vst . " \r\n";
-            }
-            if (isset($this->request->post['sb_udata_uip']) && $this->request->post['sb_udata_uip'] != '') {
-                $sb_udata_uip = $this->request->post['sb_udata_uip'];
-                $mail_text .= $this->language->get('sb_udata_uip') . $sb_udata_uip . " \r\n";
-            }
-            if (isset($this->request->post['sb_udata_uag']) && $this->request->post['sb_udata_uag'] != '') {
-                $sb_udata_uag = $this->request->post['sb_udata_uag'];
-                $mail_text .= $this->language->get('sb_udata_uag') . $sb_udata_uag . " \r\n";
-            }
-            if (isset($this->request->post['sb_promo_code']) && $this->request->post['sb_promo_code'] != '') {
-                $sb_promo_code = $this->request->post['sb_promo_code'];
-                $mail_text .= $this->language->get('sb_promo_code') . $sb_promo_code . " \r\n";
-            }
-            // Private data end
 
             $from_email = 'xd_callback@' . $_SERVER['SERVER_NAME'];
             $sender_name = $this->config->get('config_name');

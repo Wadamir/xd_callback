@@ -43,8 +43,25 @@
                                         </div>
                                     <?php } ?>
                                 </div>
+                                <div class="col-lg-6 col-xs-12"></div>
+                            </div>
+                            <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
                                 <div class="col-lg-6 col-xs-12">
-                                    <label class="control-label mb-10"><?php echo $entry_success_field; ?> (<?php echo $success_field_tooltip; ?>)</label>
+                                    <label class="control-label"><?php echo $entry_success_type; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[success_type]" id="xd_callback_success_type" class="form-control custom">
+                                            <?php if (isset($xd_callback['success_type']) && boolval($xd_callback['success_type'])) { ?>
+                                                <option value="0"><?php echo $success_type0; ?></option>
+                                                <option value="1" selected="selected"><?php echo $success_type1; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0" selected="selected"><?php echo $success_type0; ?></option>
+                                                <option value="1"><?php echo $success_type1; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-xs-12" id="xd_callback_success_text" style="<?php if (isset($xd_callback['success_type']) && boolval($xd_callback['success_type'])) { ?>display:none;<?php } ?>">
+                                    <label class="control-label"><?php echo $entry_success_field; ?> (<?php echo $success_field_tooltip; ?>)</label>
                                     <?php foreach ($languages as $language) { ?>
                                         <?php $language_id = $language['language_id']; ?>
                                         <div class="input-group mb-15">
@@ -52,6 +69,10 @@
                                             <input type="text" name="xd_callback[success_field][<?php echo $language_id; ?>]" placeholder="<?php echo $entry_success_field; ?>" value="<?php echo isset($xd_callback['success_field'][$language_id]) ? $xd_callback['success_field'][$language_id] : ''; ?>" class="form-control" />
                                         </div>
                                     <?php } ?>
+                                </div>
+                                <div class="col-lg-6 col-xs-12" id="xd_callback_success_utm" style="<?php if (!isset($xd_callback['success_type']) || !boolval($xd_callback['success_type'])) { ?>display:none;<?php } ?>">
+                                    <label class="control-label"><?php echo $entry_success_utm; ?></label>
+                                    <input type="text" name="xd_callback[success_utm]" value="<?php echo isset($xd_callback['success_utm']) ? $xd_callback['success_utm'] : ''; ?>" class="form-control" />
                                 </div>
                             </div>
                             <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
@@ -395,7 +416,21 @@
 </div>
 <?php echo $footer; ?>
 <script type="text/javascript">
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded", function() {
+        let xd_callback_success_type = document.getElementById('xd_callback_success_type');
+        let xd_callback_success_text = document.getElementById('xd_callback_success_text');
+        let xd_callback_success_utm = document.getElementById('xd_callback_success_utm');
+        if (xd_callback_success_type && xd_callback_success_text && xd_callback_success_utm) {
+            xd_callback_success_type.addEventListener('change', function() {
+                if (this.value === '0') {
+                    xd_callback_success_text.style.display = 'block';
+                    xd_callback_success_utm.style.display = 'none';
+                } else {
+                    xd_callback_success_text.style.display = 'none';
+                    xd_callback_success_utm.style.display = 'block';
+                }
+            });
+        }
         $('.color_input input').ColorPicker({
             onChange: function(hsb, hex, rgb, el) {
                 $(el).val("#" + hex);
