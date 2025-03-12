@@ -5,7 +5,7 @@ $_['modal_title']       = 'Request a call back';
 $_['field1_title']      = 'Name';
 $_['field2_title']      = 'Phone';
 $_['field3_title']      = 'Message';
-$_['text_agree']        = 'By clicking "SEND" button, you have read and agree to <a href="#" onclick=\'openInfo(event, "%s");\' class="agree"><b>%s</b></a>';
+$_['text_agree']        = 'By clicking "SEND" button, you have read and agree to <a href="#" onclick=\'callbackOpenInfo(event, "%s");\' class="agree"><b>%s</b></a>';
 
 $_['required_text']     = 'required field';
 $_['success_field']     = '<h3>Thank you!<br />We will contact you as soon as possible.</h3>';

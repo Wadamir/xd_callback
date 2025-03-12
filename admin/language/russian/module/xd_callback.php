@@ -11,7 +11,8 @@ $_['text_enabled']          = 'Включено';
 $_['text_disabled']         = 'Отключено';
 
 //Buttons
-$_['button_save']           = 'Сохранить';
+$_['button_save']           = 'Сохранить и выйти';
+$_['button_apply']          = 'Применить изменения';
 $_['button_cancel']         = 'Отмена';
 
 // Nav tabs
@@ -40,7 +41,7 @@ $_['value_validation_type2']        = '+38(000)000-00-00';
 $_['entry_spam_protection']        = 'Дополнительная защита от спама';
 
 // Entry
-$_['entry_button_name']             = 'Текст на кнопке';
+$_['entry_button_name']             = 'Текст на кнопке (не виден на стандартной кнопке)';
 $_['entry_status']                  = 'Статус модуля XD Callback';
 $_['entry_success_field']           = 'Текст успешной отправки во всплывающем окне';
 $_['success_field_tooltip']         = 'Допустимо использовать html-теги';

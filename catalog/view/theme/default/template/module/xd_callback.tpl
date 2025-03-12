@@ -39,7 +39,7 @@
                                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
                                 </svg>
                             </button>
-                            <h2 class="modal-title"><?php echo $modal_title; ?></h2>
+                            <h2 id="xd_callback_modal_title" class="modal-title"><?php echo $modal_title; ?></h2>
                         </div>
                         <div class="modal-body">
                             <div class="col-xl-12">
@@ -125,7 +125,7 @@
                                     </div>
                                 <?php } ?>
                                 <?php if (boolval($captcha)) { ?>
-                                    <div class="captcha <?= $captcha_class ?>">
+                                    <div id="xd_callback_captcha" class="captcha <?= $captcha_class ?>">
                                         <?php echo $captcha; ?>
                                     </div>
                                 <?php } ?>
@@ -139,12 +139,19 @@
                             <?php } ?>
                         </div>
                         <div class="modal-footer">
-                            <div class="col-sm-2 hidden-xs">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div id="xd_callback_error" class="pb-1 text-left text-danger hidden"></div>
+                                </div>
                             </div>
-                            <div class="col-sm-8 col-xs-12">
-                                <button type="submit" class="btn btn-lg btn-block btn-default"><?php echo $submit_button; ?></button>
-                            </div>
-                            <div class="col-sm-2 hidden-xs">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs">
+                                </div>
+                                <div class="col-sm-8 col-xs-12">
+                                    <button type="submit" class="btn btn-lg btn-block btn-default"><?php echo $submit_button; ?></button>
+                                </div>
+                                <div class="col-sm-2 hidden-xs">
+                                </div>
                             </div>
                         </div>
                     </fieldset>
@@ -153,27 +160,19 @@
         </div>
     </div>
     <script>
-        function openInfo(e, link) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open(link, '_blank');
-            return false;
-        }
-
-        <?php if ($validation_type !== '0') { ?>
-            $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            <?php if ($validation_type !== '0') { ?>
                 $('#xd_callback_phone').mask('<?= $validation_type ?>');
-            });
-        <?php } ?>
+            <?php } ?>
+            <?php if ($exan_status) { ?>
+                sbjs.init();
+                callbackPlaceData(sbjs.get);
+            <?php } ?>
+        });
         <?php if ($exan_status) { ?>
-            document.addEventListener("DOMContentLoaded", function() {
-                sbjs.init({
-                    xd_callback: placeData
-                });
-            });
 
-            function placeData(sb) {
-                // console.log(sb);
+            function callbackPlaceData(sb) {
+                console.log(sb);
                 document.getElementById('xd_callback_sb_first_typ').value = sb.first.typ;
                 document.getElementById('xd_callback_sb_first_src').value = sb.first.src;
                 document.getElementById('xd_callback_sb_first_mdm').value = sb.first.mdm;

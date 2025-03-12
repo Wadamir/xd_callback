@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-	<code>xdcb200</code>
+	<code>XDCB200</code>
     <name><![CDATA[<b>XD Callback</b> for Opencart 2.x, 3.x]]></name>
     <version>2.0.1</version>
-    <author>Domus159@gmail.com</author>
+    <author><![CDATA[<span style="color:#0066cc"><b>XDomus.ru</b></span>]]></author>
     <link>https://xdomus.ru/opencart/obratnyj-zvonok-dlya-opencart-2-besplatno/</link>
     <file path="catalog/controller/common/header.php">
         <operation>

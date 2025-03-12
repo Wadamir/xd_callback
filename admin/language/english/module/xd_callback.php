@@ -11,7 +11,8 @@ $_['text_enabled']          = 'Enabled';
 $_['text_disabled']         = 'Disabled';
 
 //Buttons
-$_['button_save']           = 'Save';
+$_['button_save']           = 'Save & Exit';
+$_['button_apply']          = 'Apply & Stay';
 $_['button_cancel']         = 'Cancel';
 
 // Nav tabs
@@ -41,7 +42,7 @@ $_['value_validation_type2']        = '+38(000)000-00-00';
 $_['entry_spam_protection']         = 'Additional spam protection';
 
 // Entry
-$_['entry_button_name']             = 'Text on button';
+$_['entry_button_name']             = 'Text on button (not visible on standard button)';
 $_['entry_status']                  = 'Enable XD Callback module';
 $_['entry_success_field']           = 'Success pop-up window text';
 $_['success_field_tooltip']         = 'Using HTML tags is allowed';

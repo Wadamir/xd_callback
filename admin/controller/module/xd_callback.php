@@ -13,6 +13,12 @@ class ControllerModuleXDCallback extends Controller
         if (($this->request->server['REQUEST_METHOD'] === 'POST') && $this->validate()) {
             $this->model_setting_setting->editSetting('xd_callback', $this->request->post);
             $this->session->data['success'] = $this->language->get('text_success');
+
+            // Save & Stay button
+            if (isset($this->request->post['save_and_stay']) && $this->request->post['save_and_stay'] == 1) {
+                $this->response->redirect($this->url->link('module/xd_callback', 'token=' . $this->session->data['token'], 'SSL'));
+            }
+
             $this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
         }
         // Heading
@@ -24,6 +30,7 @@ class ControllerModuleXDCallback extends Controller
         $data['text_disabled'] = $this->language->get('text_disabled');
         //Buttons
         $data['button_save'] = $this->language->get('button_save');
+        $data['button_apply'] = $this->language->get('button_apply');
         $data['button_cancel'] = $this->language->get('button_cancel');
         // Nav tabs
         $data['settings_main'] = $this->language->get('settings_main');

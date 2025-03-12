@@ -298,7 +298,14 @@ class ControllerModuleXDCallback extends Controller
         // Validate phone number
         $this->field2_status = intval($xd_callback_setting['field2_status']);
         if ($this->field2_status === 2) {
-            if ((utf8_strlen($this->request->post['xd_callback_phone']) < 9) || (utf8_strlen($this->request->post['xd_callback_phone']) > 20)) {
+            $min_length = 9;
+            $max_length = 20;
+            $this->phone_validation_type = $xd_callback_setting['validation_type'];
+            if ($this->phone_validation_type) {
+                $min_length = utf8_strlen($this->phone_validation_type);
+                $max_length = utf8_strlen($this->phone_validation_type);
+            }
+            if ((utf8_strlen($this->request->post['xd_callback_phone']) < $min_length) || (utf8_strlen($this->request->post['xd_callback_phone']) > $max_length)) {
                 $this->error['message'] = $this->language->get('error_phone');
                 $this->error['input'] = 'xd_callback_phone';
                 return false;
@@ -322,26 +329,18 @@ class ControllerModuleXDCallback extends Controller
             }
         }
 
-        return !$this->error;
-    }
-
-    public function validate_captcha()
-    {
-        $this->load->model('setting/setting');
-        $buyoneclick = $this->config->get('buyoneclick');
-        $buyoneclick_captcha = $buyoneclick['config_captcha'];
-        // var_dump($buyoneclick);
-        $json = array();
         // Captcha
-        if (isset($buyoneclick_captcha) && $buyoneclick_captcha != '') {
-            $captcha = $this->load->controller('extension/captcha/' . $buyoneclick_captcha . '/validate');
+        $data['captcha'] = (isset($xd_callback_setting['captcha'])) ? $xd_callback_setting['captcha'] : 0; // Captcha
+        $this->captcha = $data['captcha'];
+        if ($this->captcha && $this->config->get($this->captcha . '_status')) {
+            $captcha = $this->load->controller('captcha/' . $this->captcha . '/validate');
             if ($captcha) {
-                $json['error'] = $captcha;
-            } else {
-                $json['success'] = 'ok';
+                $this->error['message'] = $this->language->get('error_captcha');
+                $this->error['input'] = 'xd_callback_captcha';
+                return false;
             }
         }
-        $this->response->addHeader('Content-Type: application/json');
-        $this->response->setOutput(json_encode($json));
+
+        return !$this->error;
     }
 }

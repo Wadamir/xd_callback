@@ -5,7 +5,7 @@ $_['modal_title']       = 'Заказ обратного звонка';
 $_['field1_title']      = 'Имя';
 $_['field2_title']      = 'Телефон';
 $_['field3_title']      = 'Сообщение';
-$_['text_agree']        = 'Нажимая кнопку "ОТПРАВИТЬ", Вы соглашаетесь с <a href="#" onclick=\'openInfo(event, "%s");\' class="agree"><b>%s</b></a>';
+$_['text_agree']        = 'Нажимая кнопку "ОТПРАВИТЬ", Вы соглашаетесь с <a href="#" onclick=\'callbackOpenInfo(event, "%s");\' class="agree"><b>%s</b></a>';
 
 $_['required_text']     = 'обязательное поле';
 $_['success_field']     = '<h3>Спасибо!<br />Мы свяжемся с Вами в самое ближайшее время.</h4>';
