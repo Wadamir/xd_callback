@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('xd_callback-form').addEventListener('submit', function (event) {
         event.preventDefault();
-        if (!callbackFormValidation(this)) return false;
+        // if (!callbackFormValidation(this)) return false;
 
         let submitBtn = this.querySelector('button[type=submit]');
         let errorElem = document.getElementById('xd_callback_error');
