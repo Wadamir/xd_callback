@@ -48,9 +48,9 @@ class ControllerModuleXDCallback extends Controller
                 $data['field3_title'] = $this->language->get('field3_title'); // Message title
 
                 // Custom field
-                $data['field_custom_type'] = $xd_callback_setting['field_custom_type'];
-                $data['field_custom_status'] = intval($xd_callback_setting['field_custom_status']);
-                $data['field_custom_title'] = $xd_callback_setting['field_custom_title'][$current_language_id];
+                $data['field_custom_type'] = (isset($xd_callback_setting['field_custom_type'])) ? $xd_callback_setting['field_custom_type'] : '';
+                $data['field_custom_status'] = (isset($xd_callback_setting['field_custom_status'])) ? intval($xd_callback_setting['field_custom_status']) : 0;
+                $data['field_custom_title'] = (isset($xd_callback_setting['field_custom_title'][$current_language_id])) ? $xd_callback_setting['field_custom_title'][$current_language_id] : '';
 
                 // Captcha
                 $data['captcha'] = $xd_callback_setting['captcha']; // Captcha
