@@ -180,6 +180,52 @@
                                 </div>
                             </div>
                             <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
+                                <div class="col-lg-4 col-xs-12">
+                                    <label class="control-label" for="field_custom_title"><?php echo $field_custom_title_entry; ?></label>
+                                    <?php foreach ($languages as $language) { ?>
+                                        <?php $language_id = $language['language_id']; ?>
+                                        <div class="input-group mb-15">
+                                            <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+                                            <input type="text" name="xd_callback[field_custom_title][<?php echo $language_id; ?>]" placeholder="<?php echo $field_custom_title_entry; ?>" value="<?php echo isset($xd_callback['field_custom_title'][$language_id]) ? $xd_callback['field_custom_title'][$language_id] : ''; ?>" class="form-control" />
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <label class="control-label" for="field_custom_status"><?php echo $field_custom_status_entry; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[field_custom_status]" id="field_custom_status" class="form-control">
+                                            <?php if ($xd_callback['field_custom_status'] == '1') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } elseif ($xd_callback['field_custom_status'] == '2') { ?>
+                                                <option value="0"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2" selected="selected"><?php echo $field_required; ?></option>
+                                            <?php } else { ?>
+                                                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                                <option value="1"><?php echo $text_enabled; ?></option>
+                                                <option value="2"><?php echo $field_required; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <label class="control-label" for="field_custom_type"><?php echo $field_custom_type_entry; ?></label>
+                                    <div class="custom-select mb-15">
+                                        <select name="xd_callback[field_custom_type]" id="field_custom_type" class="form-control">
+                                            <?php if ($xd_callback['field_custom_type'] == 'textarea') { ?>
+                                                <option value="text"><?php echo $field_custom_type_text; ?></option>
+                                                <option value="textarea" selected="selected"><?php echo $field_custom_type_textarea; ?></option>
+                                            <?php } else { ?>
+                                                <option value="text" select="selected"><?php echo $field_custom_type_text; ?></option>
+                                                <option value="textarea"><?php echo $field_custom_type_textarea; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
                                 <div class="col-lg-6 col-xs-12">
                                     <label class="control-label" for="spam_protection"><?php echo $entry_spam_protection; ?></label>
                                     <div class="custom-select mb-15">

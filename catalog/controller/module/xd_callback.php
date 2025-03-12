@@ -47,6 +47,11 @@ class ControllerModuleXDCallback extends Controller
                 $this->field3_status = $data['field3_status'];
                 $data['field3_title'] = $this->language->get('field3_title'); // Message title
 
+                // Custom field
+                $data['field_custom_type'] = $xd_callback_setting['field_custom_type'];
+                $data['field_custom_status'] = intval($xd_callback_setting['field_custom_status']);
+                $data['field_custom_title'] = $xd_callback_setting['field_custom_title'][$current_language_id];
+
                 // Captcha
                 $data['captcha'] = $xd_callback_setting['captcha']; // Captcha
                 $this->captcha = $data['captcha'];
@@ -111,6 +116,11 @@ class ControllerModuleXDCallback extends Controller
             if (isset($this->request->post['xd_callback_message'])) {
                 $xd_callback_message = $this->request->post['xd_callback_message'];
                 $mail_text .= $this->language->get('text_message') . $xd_callback_message . " \r\n";
+            }
+
+            if (isset($this->request->post['xd_callback_custom'])) {
+                $xd_callback_custom = $this->request->post['xd_callback_custom'];
+                $mail_text .= $this->language->get('field_custom_title') . $xd_callback_custom . " \r\n";
             }
 
             $mail_text .= " \r\n";
@@ -325,6 +335,18 @@ class ControllerModuleXDCallback extends Controller
             if (strlen($this->request->post['xd_callback_message']) < 1 || strlen($this->request->post['xd_callback_message']) > 9000) {
                 $this->error['message'] = $this->language->get('error_message');
                 $this->error['input'] = 'xd_callback_message';
+                return false;
+            }
+        }
+
+        // Validate custom field
+        $this->field_custom_status = intval($xd_callback_setting['field_custom_status']);
+        // $this->log->write($xd_callback_setting['field_custom_title']);
+        if ($this->field_custom_status === 2) {
+            if (strlen($this->request->post['xd_callback_custom']) < 1 || strlen($this->request->post['xd_callback_custom']) > 9000) {
+                $current_language_id = $this->config->get('config_language_id');
+                $this->error['message'] = sprintf($this->language->get('error_custom'), $xd_callback_setting['field_custom_title'][$current_language_id]);
+                $this->error['input'] = 'xd_callback_custom';
                 return false;
             }
         }

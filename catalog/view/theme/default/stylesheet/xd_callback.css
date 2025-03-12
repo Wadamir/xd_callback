@@ -416,6 +416,20 @@
     height: 44px;
 }
 
+.modal.modal-custom .modal-dialog .modal-content .modal-body .has-warning label {
+    padding-left: 15px;
+    color: #000;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .has-warning label:before {
+    content: "* ";
+    color: #FF0000;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .form-group-custom input {
+    border-radius: 8px;
+}
+
 .modal.modal-custom .modal-dialog .modal-content .modal-body textarea {
     border-radius: 8px;
     padding: 12px;

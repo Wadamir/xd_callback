@@ -45,6 +45,12 @@ class ControllerModuleXDCallback extends Controller
         $data['field4_title'] = $this->language->get('field4_title');
         $data['agree_title'] = $this->language->get('agree_title');
         $data['field_required'] = $this->language->get('field_required');
+        // Custom field
+        $data['field_custom_title_entry'] = $this->language->get('field_custom_title_entry');
+        $data['field_custom_status_entry'] = $this->language->get('field_custom_status_entry');
+        $data['field_custom_type_entry'] = $this->language->get('field_custom_type_entry');
+        $data['field_custom_type_text'] = $this->language->get('field_custom_type_text');
+        $data['field_custom_type_textarea'] = $this->language->get('field_custom_type_textarea');
         // Phone validation
         $data['entry_validation_type'] = $this->language->get('entry_validation_type');
         $data['text_validation_type0'] = $this->language->get('text_validation_type0');

@@ -124,6 +124,16 @@
                                         <textarea id="xd_callback_message" class="form-control xd_callback-input<?= ($field3_status === 2) ? ' required' : '' ?>" name="xd_callback_message" rows="3" placeholder="<?php echo $field3_title; ?>"></textarea>
                                     </div>
                                 <?php } ?>
+                                <?php if ($field_custom_status > 0) { ?>
+                                    <div class="form-group form-group-custom <?= ($field_custom_status === 2) ? ' has-warning' : '' ?>">
+                                        <label for="xd_callback_custom" class="control-label"><?php echo $field_custom_title; ?></label>
+                                        <?php if ($field_custom_type === 'text') { ?>
+                                            <input id="xd_callback_custom" class="form-control xd_callback-input<?= ($field_custom_status === 2) ? ' required' : '' ?>" type="text" name="xd_callback_custom" placeholder="<?php echo $field_custom_title; ?>">
+                                        <?php } else if ($field_custom_type === 'textarea') { ?>
+                                            <textarea id="xd_callback_custom" class="form-control xd_callback-input<?= ($field_custom_status === 2) ? ' required' : '' ?>" name="xd_callback_custom" rows="3" placeholder="<?php echo $field_custom_title; ?>"></textarea>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
                                 <?php if (boolval($captcha)) { ?>
                                     <div id="xd_callback_captcha" class="captcha <?= $captcha_class ?>">
                                         <?php echo $captcha; ?>

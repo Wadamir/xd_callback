@@ -18,6 +18,7 @@ $_['error_captcha']     = 'Captcha is incorrect!';
 $_['error_agree']       = 'You must agree to the processing of personal data!';
 $_['error_phone']       = 'Phone number is incorrect!';
 $_['error_name']        = 'Name is incorrect!';
+$_['error_custom']      = 'Please, fill the field %s!';
 $_['spam_protection']   = '<h3>Thank you very much!<br />Your message has been sent.</h3>';
 
 // Text

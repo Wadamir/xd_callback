@@ -30,6 +30,13 @@ $_['field4_title']          = 'Captcha';
 $_['agree_title']           = 'Require compliance with ';
 $_['field_required']        = 'Required field';
 
+// Custom field
+$_['field_custom_title_entry']    = 'Custom field title';
+$_['field_custom_status_entry']   = 'Custom field status';
+$_['field_custom_type_entry']     = 'Custom field type';
+$_['field_custom_type_text']      = 'Text field';
+$_['field_custom_type_textarea']  = 'Textarea field';
+
 // Phone validation
 $_['entry_validation_type']         = 'Phone check mask';
 $_['text_validation_type0']         = 'Disabled';

@@ -29,6 +29,13 @@ $_['field3_title']          = 'Сообщение';
 $_['agree_title']           = 'Требовать согласие с ';
 $_['field_required']        = 'Обязательное поле';
 
+// Custom field
+$_['field_custom_title_entry']    = 'Название дополнительного поля';
+$_['field_custom_status_entry']   = 'Статус дополнительного поля';
+$_['field_custom_type_entry']     = 'Тип дополнительного поля';
+$_['field_custom_type_text']      = 'Текстовое поле';
+$_['field_custom_type_textarea']  = 'Текстовая область';
+
 // Phone validation
 $_['entry_validation_type']         = 'Маска телефонного номера';
 $_['text_validation_type0']         = 'Отключено';
