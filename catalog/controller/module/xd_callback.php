@@ -120,7 +120,9 @@ class ControllerModuleXDCallback extends Controller
 
             if (isset($this->request->post['xd_callback_custom'])) {
                 $xd_callback_custom = $this->request->post['xd_callback_custom'];
-                $mail_text .= $this->language->get('field_custom_title') . $xd_callback_custom . " \r\n";
+                $current_language_id = $this->config->get('config_language_id');
+                $xd_callback_custom_title = $this->config->get('xd_callback')['field_custom_title'][$current_language_id];
+                $mail_text .= $xd_callback_custom_title . ': ' . $xd_callback_custom . " \r\n";
             }
 
             $mail_text .= " \r\n";
@@ -341,7 +343,6 @@ class ControllerModuleXDCallback extends Controller
 
         // Validate custom field
         $this->field_custom_status = intval($xd_callback_setting['field_custom_status']);
-        // $this->log->write($xd_callback_setting['field_custom_title']);
         if ($this->field_custom_status === 2) {
             if (strlen($this->request->post['xd_callback_custom']) < 1 || strlen($this->request->post['xd_callback_custom']) > 9000) {
                 $current_language_id = $this->config->get('config_language_id');
