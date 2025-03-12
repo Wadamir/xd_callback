@@ -96,12 +96,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorElem.classList.add('hidden');
                     document.getElementById('xd_callback-form').reset();
                     submitBtn.disabled = false;
-                    submitBtn.classList.remove('disabled');
-                    $('#xd_callback_modal').modal('hide');
-                    $('#xd_callback_success').modal('show');
-                    setTimeout(() => {
-                        $('#xd_callback_success').modal('hide');
-                    }, 5000);
+                    if (json.redirect) {
+                        window.location.href = json.redirect;
+                    } else {
+                        submitBtn.classList.remove('disabled');
+                        $('#xd_callback_modal').modal('hide');
+                        $('#xd_callback_success').modal('show');
+                        setTimeout(() => {
+                            $('#xd_callback_success').modal('hide');
+                        }, 5000);
+                    }
                 }
             })
             .catch(error => {

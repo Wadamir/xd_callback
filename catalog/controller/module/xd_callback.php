@@ -97,6 +97,7 @@ class ControllerModuleXDCallback extends Controller
     {
         if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->validate()) {
 
+            $xd_callback_setting = $this->config->get('xd_callback');
             $this->load->language('module/xd_callback');
             $json = array();
             $mail_text = '';
@@ -272,6 +273,14 @@ class ControllerModuleXDCallback extends Controller
 
             if (!$mail_result) {
                 $json['success'] = 'Success sending';
+                // Success
+                $data['success_type'] = (isset($xd_callback_setting['success_type'])) ? intval($xd_callback_setting['success_type']) : 0;
+                $data['success_utm'] = (isset($xd_callback_setting['success_utm']) && trim($xd_callback_setting['success_utm']) != '') ? 'utm_source=' . trim($xd_callback_setting['success_utm']) : '';
+                if ($data['success_type'] === 1 && $data['success_utm'] !== '') {
+                    $json['redirect'] = $this->url->link('checkout/success', 'utm_source=' . $data['success_utm'], 'SSL');
+                } elseif ($data['success_type'] === 1) {
+                    $json['redirect'] = $this->url->link('checkout/success', '', 'SSL');
+                }
             } else {
                 $json['error'] = 'Error sending';
             }
