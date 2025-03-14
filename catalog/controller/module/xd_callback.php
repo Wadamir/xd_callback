@@ -81,13 +81,27 @@ class ControllerModuleXDCallback extends Controller
                 $data['success_utm'] = (isset($xd_callback_setting['success_utm'])) ? 'utm_source=' . trim($xd_callback_setting['success_utm']) : 'utm_source=xd_callback';
 
                 // Styles
-                $data['button_color'] = $xd_callback_setting['button_color'];
-                $data['button_position'] = $xd_callback_setting['button_position'];
-                $data['modal_style'] = $xd_callback_setting['modal_style'];
+                $data['button_color'] = (isset($xd_callback_setting['button_color'])) ? $xd_callback_setting['button_color'] : '';
+                $data['button_position'] = (isset($xd_callback_setting['button_position'])) ? $xd_callback_setting['button_position'] : 'bottom_left';
+                $data['modal_style'] = (isset($xd_callback_setting['modal_style'])) ? $xd_callback_setting['modal_style'] : 'default';
 
-                // Analytics
-                $data['exan_status'] = boolval($xd_callback_setting['exan_status']);
+                // SourceBuster Analytics
+                $data['exan_status'] = (isset($xd_callback_setting['exan_status'])) ? boolval($xd_callback_setting['exan_status']) : false;
                 $this->exan_status = $data['exan_status'];
+                // Google Analytics
+                $data['google_status']              = (isset($xd_callback_setting['google_status'])) ? boolval($xd_callback_setting['google_status']) : false;
+                $data['google_category_btn']        = (isset($xd_callback_setting['google_category_btn'])) ? trim($xd_callback_setting['google_category_btn']) : '';
+                $data['google_action_btn']          = (isset($xd_callback_setting['google_action_btn'])) ? trim($xd_callback_setting['google_action_btn']) : '';
+                $data['google_category_send']       = (isset($xd_callback_setting['google_category_send'])) ? trim($xd_callback_setting['google_category_send']) : '';
+                $data['google_action_send']         = (isset($xd_callback_setting['google_action_send'])) ? trim($xd_callback_setting['google_action_send']) : '';
+                $data['google_category_success']    = (isset($xd_callback_setting['google_category_success'])) ? trim($xd_callback_setting['google_category_success']) : '';
+                $data['google_action_success']      = (isset($xd_callback_setting['google_action_success'])) ? trim($xd_callback_setting['google_action_success']) : '';
+                // Yandex Metrika
+                $data['ya_status']                  = (isset($xd_callback_setting['ya_status'])) ? boolval($xd_callback_setting['ya_status']) : false;
+                $data['ya_counter']                 = (isset($xd_callback_setting['ya_counter'])) ? trim($xd_callback_setting['ya_counter']) : '';
+                $data['ya_identifier']              = (isset($xd_callback_setting['ya_identifier'])) ? trim($xd_callback_setting['ya_identifier']) : '';
+                $data['ya_identifier_send']         = (isset($xd_callback_setting['ya_identifier_send'])) ? trim($xd_callback_setting['ya_identifier_send']) : '';
+                $data['ya_identifier_success']      = (isset($xd_callback_setting['ya_identifier_success'])) ? trim($xd_callback_setting['ya_identifier_success']) : '';
             }
         }
         return $this->load->view('default/template/module/xd_callback.tpl', $data);

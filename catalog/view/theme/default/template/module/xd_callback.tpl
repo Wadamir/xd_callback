@@ -1,7 +1,7 @@
 <!-- xd callback module start -->
 <?php if ($status) { ?>
     <div class="button_wrapper <?= $button_position ?>">
-        <a href="javascript:void(0)" onclick="$('#xd_callback_modal').modal('show');" id="xd_callback_phone_button" class="btn btn-link">
+        <a href="javascript:void(0)" onclick="clickAnalytics?.(); $('#xd_callback_modal').modal('show');" id="xd_callback_phone_button" class="btn btn-link">
             <div class="circlephone" style="transform-origin: center; border-color: <?= $button_color ?>;"></div>
             <div class="circle-fill" style="transform-origin: center; background-color: <?= $button_color ?>;"></div>
             <div class="img-circle" style="transform-origin: center; background-color: <?= $button_color ?>;">
@@ -215,6 +215,50 @@
                 document.getElementById('xd_callback_sb_promo_code').value = sb.promo.code;
             }
         <?php } ?>
+
+
+        /* Analytics */
+        function clickAnalytics() {
+            console.log('clickAnalytics');
+            <?php if ($ya_status && $ya_counter != '' && $ya_identifier != '') { ?>
+                yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier ?>');
+            <?php } ?>
+            <?php if ($google_status && $google_category_btn != '' && $google_action_btn != '') { ?>
+                ga('send', 'event', '<?= $google_category_btn ?>', '<?= $google_action_btn ?>');
+                gtag('event', '<?= $google_action_btn ?>', {
+                    'event_category': '<?= $google_category_btn ?>'
+                });
+            <?php } ?>
+            return true;
+        }
+
+        function clickAnalyticsSend() {
+            console.log('clickAnalyticsSend');
+            <?php if ($ya_status && $ya_counter != '' && $ya_identifier_send != '') { ?>
+                yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier_send ?>');
+            <?php } ?>
+            <?php if ($google_status && $google_category_send != '' && $google_action_send != '') { ?>
+                ga('send', 'event', '<?= $google_category_send ?>', '<?= $google_action_send ?>');
+                gtag('event', '<?= $google_action_send ?>', {
+                    'event_category': '<?= $google_category_send ?>'
+                });
+            <?php } ?>
+            return true;
+        }
+
+        function clickAnalyticsSuccess() {
+            console.log('clickAnalyticsSuccess');
+            <?php if ($ya_status && $ya_counter != '' && $ya_identifier_success != '') { ?>
+                yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier_success ?>');
+            <?php } ?>
+            <?php if ($google_status && $google_category_success != '' && $google_action_success != '') { ?>
+                ga('send', 'event', '<?= $google_category_success ?>', '<?= $google_action_success ?>');
+                gtag('event', '<?= $google_action_success ?>', {
+                    'event_category': '<?= $google_category_success ?>'
+                });
+            <?php } ?>
+            return true;
+        }
     </script>
 <?php } ?>
 <!-- xd callback module end -->
