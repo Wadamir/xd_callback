@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('xd_callback-form').addEventListener('submit', function (event) {
         event.preventDefault();
 
-        clickAnalyticsSend?.();
+        callbackClickAnalyticsSend?.();
 
         let submitBtn = this.querySelector('button[type=submit]');
         let errorElem = document.getElementById('xd_callback_error');
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorElem.textContent = '';
                     errorElem.classList.add('hidden');
                     document.getElementById('xd_callback-form').reset();
-                    clickAnalyticsSuccess?.();
+                    callbackClickAnalyticsSuccess?.();
                     submitBtn.disabled = false;
                     if (json.redirect) {
                         window.location.href = json.redirect;

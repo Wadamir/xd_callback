@@ -1,7 +1,7 @@
 <!-- xd callback module start -->
 <?php if ($status) { ?>
     <div class="button_wrapper <?= $button_position ?>">
-        <a href="javascript:void(0)" onclick="clickAnalytics?.(); $('#xd_callback_modal').modal('show');" id="xd_callback_phone_button" class="btn btn-link">
+        <a href="javascript:void(0)" onclick="callbackClickAnalytics?.(); $('#xd_callback_modal').modal('show');" id="xd_callback_phone_button" class="btn btn-link">
             <div class="circlephone" style="transform-origin: center; border-color: <?= $button_color ?>;"></div>
             <div class="circle-fill" style="transform-origin: center; background-color: <?= $button_color ?>;"></div>
             <div class="img-circle" style="transform-origin: center; background-color: <?= $button_color ?>;">
@@ -218,8 +218,8 @@
 
 
         /* Analytics */
-        function clickAnalytics() {
-            console.log('clickAnalytics');
+        function callbackClickAnalytics() {
+            console.log('callbackClickAnalytics');
             <?php if ($ya_status && $ya_counter != '' && $ya_identifier != '') { ?>
                 yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier ?>');
             <?php } ?>
@@ -232,8 +232,8 @@
             return true;
         }
 
-        function clickAnalyticsSend() {
-            console.log('clickAnalyticsSend');
+        function callbackClickAnalyticsSend() {
+            console.log('callbackClickAnalyticsSend');
             <?php if ($ya_status && $ya_counter != '' && $ya_identifier_send != '') { ?>
                 yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier_send ?>');
             <?php } ?>
@@ -246,8 +246,8 @@
             return true;
         }
 
-        function clickAnalyticsSuccess() {
-            console.log('clickAnalyticsSuccess');
+        function callbackClickAnalyticsSuccess() {
+            console.log('callbackClickAnalyticsSuccess');
             <?php if ($ya_status && $ya_counter != '' && $ya_identifier_success != '') { ?>
                 yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier_success ?>');
             <?php } ?>
